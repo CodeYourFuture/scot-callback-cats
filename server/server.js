@@ -3,7 +3,7 @@ import http from "http";
 import app from "./app";
 import { connectDb, disconnectDb } from "./db";
 
-const port = parseInt(process.env.PORT || "3000");
+const port = parseInt(process.env.PORT || "300");
 
 const server = http.createServer(app);
 

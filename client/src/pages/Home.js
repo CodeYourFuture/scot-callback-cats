@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import logo from "./logo.svg";
 
+import Login from "./Login";
+
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
 
@@ -36,6 +38,7 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
+                <Login />
 			</div>
 		</main>
 	);
