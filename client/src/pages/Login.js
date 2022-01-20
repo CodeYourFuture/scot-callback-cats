@@ -24,7 +24,7 @@ const Login = () => {
 
 					<div className="signup">
 						<p className="mb-0 me-2">
-							Don't have an account?<Link to="/Signup/new/user">Signup</Link>
+						you	Don't have an account?<Link to="/Signup/new/user">Signup</Link>
 						</p>
 					</div>
 				</div>
