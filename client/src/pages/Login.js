@@ -14,7 +14,20 @@ const Login = () => {
 
 						<h4>sign in</h4>
 					</div>
-
+					<div>
+						<>
+							<FloatingLabel
+								controlId="floatingInput"
+								label="Email address"
+								className="mb-3"
+							>
+								<Form.Control type="email" placeholder="name@example.com" />
+							</FloatingLabel>
+							<FloatingLabel controlId="floatingPassword" label="Password">
+								<Form.Control type="password" placeholder="Password" />
+							</FloatingLabel>
+						</>
+					</div>
 
 					<div className="button">
 						<button className="login-button" type="button">
@@ -24,7 +37,8 @@ const Login = () => {
 
 					<div className="signup">
 						<p className="mb-0 me-2">
-						you	Don't have an account?<Link to="/Signup/new/user">Signup</Link>
+							you Don't have an account?
+							<Link to="/Signup/new/user">Signup</Link>
 						</p>
 					</div>
 				</div>
