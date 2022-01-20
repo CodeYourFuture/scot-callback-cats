@@ -1,5 +1,5 @@
 import logoBike from "./logoBike.svg";
-import Form from "react-bootstrap/Form";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -16,22 +16,16 @@ const Login = () => {
 					</div>
 					<div>
 						<>
-							<Form.Floating className="mb-3">
-								<Form.Control
-									id="floatingInputCustom"
-									type="email"
-									placeholder="name@example.com"
-								/>
-								<label htmlFor="floatingInputCustom">Email address</label>
-							</Form.Floating>
-							<Form.Floating>
-								<Form.Control
-									id="floatingPasswordCustom"
-									type="password"
-									placeholder="Password"
-								/>
-								<label htmlFor="floatingPasswordCustom">Password</label>
-							</Form.Floating>
+							<FloatingLabel
+								controlId="floatingInput"
+								label="Email address"
+								className="mb-3"
+							>
+								<Form.Control type="email" placeholder="name@example.com" />
+							</FloatingLabel>
+							<FloatingLabel controlId="floatingPassword" label="Password">
+								<Form.Control type="password" placeholder="Password" />
+							</FloatingLabel>
 						</>
 					</div>
 
