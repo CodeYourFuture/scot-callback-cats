@@ -13,27 +13,41 @@
 .flex-container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(216, 218, 221);
+  background-color: rgb(214, 227, 243);
   align-items: center;
-  border-style: inset;
-  border-radius: 12px;
   height: 100%;
-  width: 30%;
+  border-radius: 12px;
+  padding: 100px 100px 100px 100px;
+  width: 70%;
   margin-left: 100px;
   
 }
-
- 
- 
-
-.flex-container > div {
+.container-image{
+  
+  background-color: aliceblue;
+  border-radius: 150px;
+  border-style: solid;
   
   
-  margin: 5px 5px 5px 5px;
   
-  
-  font-size: 20px;
 }
+.button{
+  padding-top: 6px;
+
+
+}
+.signup{
+  padding-top: 10px;
+}
+.img{
+  
+  text-align: center;
+  
+}
+ 
+ 
+
+ 
 
 
 
