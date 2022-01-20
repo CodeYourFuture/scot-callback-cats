@@ -19,7 +19,8 @@
   border-radius: 12px;
   padding: 100px 100px 100px 100px;
   width: 70%;
-  
+  margin-left: 10em;
+  box-shadow: 3px 3px rgb(143, 139, 139), -1em 0 .4em rgb(211, 211, 198);
   
 }
 .container-image{
