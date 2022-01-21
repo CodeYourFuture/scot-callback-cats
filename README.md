@@ -1,3 +1,22 @@
+# CYF Bike App
+
+## Postgres Dev Setup
+
+Mac users: 
+
+1. Start a Postgres server locally 
+   ``` 
+   postgres
+   ```
+1. Create a new database
+   ```
+   createdb cyf-bike-app-dev
+   ```
+1. Run the script to create the tables
+   ```
+   psql -d cyf-bike-app-dev -f server/scripts/create_database.sql
+   ```
+
 # Starter Kit
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
