@@ -26,7 +26,7 @@ export function Home() {
 	return (
 		<main role="main">
 			<div>
-				<img
+				{/* <img
 					className="logo"
 					data-qa="logo"
 					src={logo}
@@ -34,8 +34,17 @@ export function Home() {
 				/>
 				<h1 className="message" data-qa="message">
 					{message}
-				</h1>
-				<Link to="/about/this/site">About</Link>
+				</h1> */}
+				<div className="container ">
+				<ul className="list-group list-group-flush">
+					<li className="list-group-item list-group-item-action">
+						<Link to="/about/this/site">About</Link>
+					</li>
+					<li className="list-group-item list-group-item-action">
+						<Link to="/MainTable/this/site">Clients</Link>
+					</li>
+				</ul>
+				</div>
 			</div>
 		</main>
 	);
