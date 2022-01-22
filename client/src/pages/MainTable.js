@@ -15,7 +15,7 @@ const MainTable = () => {
           return response.json();
         })
       .then((data) => {
-        console.log(data,"After ");
+        console.log(data,"After");
         SetClientData(data);
         console.log(clientData, "Data from useState");
         setError(null);
@@ -55,7 +55,7 @@ const MainTable = () => {
           {clientData.map((client) => {
             return (
               <tr key={client.client_id} className={
-                selectedClientId === client.client.id ? "table-warning" : ""
+                selectedClientId === client.client_id ? "table-warning" : ""
                 }
                 onClick={() =>
                 setSelectedClientId(
