@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const MainTable = () => {
   console.log("Page Uploaded");
-  const [clientData, SetClientData] = useState ();
+  const [clientData, SetClientData] = useState (null);
   const [error, setError] = useState(null);
   const [selectedClientId, setSelectedClientId] = useState (null);
 
@@ -27,6 +27,10 @@ const MainTable = () => {
   }, []);
 
   console.log(clientData, "outside of fetch");
+
+if (clientData === null){
+  return <h1>Loading...</h1>;
+}
   return (
     <div className="container">
       <table className="table table-sm table-striped table-hover">
