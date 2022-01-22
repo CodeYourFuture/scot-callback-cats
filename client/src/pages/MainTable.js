@@ -7,7 +7,7 @@ const MainTable = () => {
   const [selectedClientId, setSelectedClientId] = useState (null);
 
   useEffect(() => {
-    fetch("http://localhost:3100/api/clients")
+    fetch("/api/clients")
       .then((response) => {
         if (!response.ok) {
           throw Error("We could not fetch the data for that resource");
