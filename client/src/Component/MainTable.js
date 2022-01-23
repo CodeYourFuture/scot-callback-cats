@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
+import "./MainTableStyle.css";
 
 const MainTable = () => {
-  console.log("Page Uploaded");
-  const [clientData, SetClientData] = useState (null);
+  const [clientData, setClientData] = useState (null);
   const [error, setError] = useState(null);
-  const [selectedClientId, setSelectedClientId] = useState (null);
 
   useEffect(() => {
     fetch("/api/clients")
@@ -15,9 +15,7 @@ const MainTable = () => {
           return response.json();
         })
       .then((data) => {
-        console.log(data,"After");
-        SetClientData(data);
-        console.log(clientData, "Data from useState");
+        setClientData(data);
         setError(null);
       })
       .catch((err) => {
@@ -26,18 +24,22 @@ const MainTable = () => {
       });
   }, []);
 
-  console.log(clientData, "outside of fetch");
-
 if (clientData === null){
-  return <h1>Loading...</h1>;
+  return (
+    <div className="d-flex justify-content-center">
+      <div className="spinner-grow">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
 }
   return (
-    <div className="container">
-      <table className="table table-sm table-striped table-hover">
-        {/* <caption>List of users</caption> */}
-        <thead>
-          <tr>
-            <th scope="col">Client Id</th>
+    <div className="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+      <table className="table table align-middle  table-striped table-hover styled-table border">
+          <caption className="visually-hidden">Clients</caption>
+        <thead className="table-dark">
+          <tr className="">
+            <th scope="col">Id</th>
             <th scope="col">Added</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
@@ -58,16 +60,9 @@ if (clientData === null){
         <tbody className="table-striped">
           {clientData.map((client) => {
             return (
-              <tr key={client.client_id} className={
-                selectedClientId === client.client_id ? "table-warning" : ""
-                }
-                onClick={() =>
-                setSelectedClientId(
-                  client.client.id === selectedClientId ? null : client.client.id
-                )
-                }>
+              <tr key={client.client_id}>
                 <td>{client.client_id}</td>
-                <td>{client.date_added}</td>
+                <td>{moment(client.date_added).format("L")}</td>
                 <td>{client.name}</td>
                 <td>{client.phone_number}</td>
                 <td>{client.bikes_needed}</td>
@@ -75,10 +70,11 @@ if (clientData === null){
                 <td>{client.residency_status}</td>
                 <td>{client.country_of_origin}</td>
                 <td>{client.time_in_scotland}</td>
+                <td>{client.language_spoken}</td>
                 <td>{client.english_speaker}</td>
                 <td>{client.english_skill_level}</td>
                 <td>{client.gender}</td>
-                <td>{client.date_of_birth}</td>
+                <td>{moment(client.date_of_birth).format("L")}</td>
                 <td>{client.postcode}</td>
                 <td>{client.referring_agency}</td>
               </tr>
