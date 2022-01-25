@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS  users, clients, booking_status, residency_status, CASCADE;
+DROP TABLE  IF EXISTS  users, clients, collections, booking_status, residency_status CASCADE;
 
 CREATE TABLE users
 (
@@ -27,6 +27,13 @@ CREATE TABLE clients
     referring_agency VARCHAR(120)
 );
 
+CREATE TABLE collections
+(
+    client_id INT,
+    collection_date TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES clients (client_id)
+);
+
 CREATE TABLE booking_status 
 (
 	booking_status_id SERIAL PRIMARY KEY,
@@ -34,6 +41,7 @@ CREATE TABLE booking_status
 );
 	
 INSERT INTO booking_status (status) values ('waiting'), ('contacted'), ('booked'), ('declined'), ('completed'), ('cancelled');
+
 
 CREATE TABLE residency_status 
 (
@@ -49,4 +57,3 @@ ADD FOREIGN KEY (booking_status) REFERENCES booking_status(booking_status_id);
 
 ALTER TABLE clients
 ADD FOREIGN KEY (residency_status) REFERENCES residency_status(residency_status_id);
-
