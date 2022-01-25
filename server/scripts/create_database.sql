@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS  users, clients;
+DROP TABLE  IF EXISTS  users, clients, booking_status, residency_status, CASCADE;
 
 CREATE TABLE users
 (
@@ -21,8 +21,32 @@ CREATE TABLE clients
     language_spoken VARCHAR(120),
     english_speaker BOOLEAN,
     english_skill_level VARCHAR(120),
-    gender INT,
+    gender VARCHAR(120),
     date_of_birth DATE,
     postcode VARCHAR(20),
     referring_agency VARCHAR(120)
 );
+
+CREATE TABLE booking_status 
+(
+	booking_status_id SERIAL PRIMARY KEY,
+	status VARCHAR
+);
+	
+INSERT INTO booking_status (status) values ('waiting'), ('contacted'), ('booked'), ('declined'), ('completed'), ('cancelled');
+
+CREATE TABLE residency_status 
+(
+	residency_status_id serial primary key,
+	status varchar
+);
+
+INSERT INTO residency_status (status) values ('asylum seeker'), ('refugee'), ('unaccompanied minor'), ('destitute/failed asylum');
+
+
+ALTER TABLE clients
+ADD FOREIGN KEY (booking_status) REFERENCES booking_status(booking_status_id);
+
+ALTER TABLE clients
+ADD FOREIGN KEY (residency_status) REFERENCES residency_status(residency_status_id);
+
