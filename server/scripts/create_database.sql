@@ -27,29 +27,22 @@ CREATE TABLE clients
     referring_agency VARCHAR(120)
 );
 
-CREATE TABLE collections
-(
-    client_id INT,
-    collection_date TIMESTAMP,
-    FOREIGN KEY (client_id) REFERENCES clients (client_id)
-);
-
 CREATE TABLE booking_status 
 (
 	booking_status_id SERIAL PRIMARY KEY,
 	status VARCHAR
 );
 	
-INSERT INTO booking_status (status) values ('waiting'), ('contacted'), ('booked'), ('declined'), ('completed'), ('cancelled');
+INSERT INTO booking_status (status) VALUES ('waiting'), ('contacted'), ('booked'), ('declined'), ('completed'), ('cancelled');
 
 
 CREATE TABLE residency_status 
 (
-	residency_status_id serial primary key,
-	status varchar
+	residency_status_id serial PRIMARY KEY,
+	status VARCHAR
 );
 
-INSERT INTO residency_status (status) values ('asylum seeker'), ('refugee'), ('unaccompanied minor'), ('destitute/failed asylum');
+INSERT INTO residency_status (status) VALUES ('asylum seeker'), ('refugee'), ('unaccompanied minor'), ('destitute/failed asylum');
 
 
 ALTER TABLE clients
