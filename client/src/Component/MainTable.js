@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./MainTableStyle.css";
+import Alert from "react-bootstrap/Alert";
 
 const MainTable = () => {
-	const [clientData, setClientData] = useState(null);
+	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		setIsLoading(true);
 		fetch("/api/clients")
 			.then((response) => {
 				if (!response.ok) {
-					throw Error("We could not fetch the data for that resource");
+					throw Error(
+						"There was an error getting the customer data, Please try again"
+					);
 				}
 				return response.json();
 			})
@@ -19,13 +24,13 @@ const MainTable = () => {
 			})
 			.catch((err) => {
 				setError(err.message);
-				if (error != null) {
-					return <alert>{err.message}</alert>;
-				}
+			})
+			.finally(() => {
+				setIsLoading(false);
 			});
 	}, []);
 
-	if (clientData === null) {
+	if (isLoading) {
 		return (
 			<div className="d-flex justify-content-center">
 				<div className="spinner-grow">
@@ -34,8 +39,11 @@ const MainTable = () => {
 			</div>
 		);
 	}
+	if (error != null) {
+		return <Alert variant="danger">{error}</Alert>;
+	}
 	return (
-		<div className="table-responsive{-xxl}">
+		<div className="table-responsive-xxl">
 			<table className="table align-middle  table-striped table-hover styled-table border">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
