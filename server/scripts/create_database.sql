@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS  users, clients, collections, booking_status, residency_status CASCADE;
+DROP TABLE  IF EXISTS  users, clients, booking_status, residency_status CASCADE;
 
 CREATE TABLE users
 (
