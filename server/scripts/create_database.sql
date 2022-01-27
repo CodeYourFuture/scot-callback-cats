@@ -18,6 +18,7 @@ CREATE TABLE clients
     residency_status INT,
     country_of_origin VARCHAR(120), 
     time_in_scotland VARCHAR(120),
+    language_spoken VARCHAR(120),
     english_speaker BOOLEAN,
     english_skill_level VARCHAR(120),
     gender INT,

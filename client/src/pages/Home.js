@@ -25,11 +25,7 @@ export function Home() {
 
 	return (
 		<main role="main">
-			<div>
-				<div className="container ">
-					<MainTable />
-				</div>
-			</div>
+			<MainTable />
 		</main>
 	);
 }
