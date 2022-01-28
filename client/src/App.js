@@ -1,4 +1,6 @@
 import { Route, Switch } from "react-router-dom";
+import UploadFile from "./pages/UploadFile";
+
 import About from "./pages/About";
 import Home from "./pages/Home";
 
@@ -9,6 +11,9 @@ const App = () => (
 		</Route>
 		<Route path="/about/this/site">
 			<About />
+		</Route>
+		<Route path="/UploadFile/">
+			<UploadFile />
 		</Route>
 	</Switch>
 );
