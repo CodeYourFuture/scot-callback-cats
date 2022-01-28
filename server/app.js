@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
-
+import cors from "cors";
 import router from "./api";
 import {
 	configuredHelmet,
@@ -14,7 +14,7 @@ const apiRoot = "/api";
 const staticDir = path.join(__dirname, "static");
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
