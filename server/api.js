@@ -89,20 +89,26 @@ const saveUser = async (element) => {
 	});
 };
 
-router.post("/clients", (req, res) => {
-	if (Array.isArray(req.body)) {
-		const promises = [];
-		req.body.forEach((element) => {
-			const promiseResult = saveUser(element);
-			promises.push(promiseResult);
-		});
-		Promise.all(promises)
-			.then(() => res.status(200).send("All clients were inserted"))
-			.catch((e) => res.status(500).send(e));
-	} else {
-		saveUser(req.body)
-			.then(() => res.status(200).send("One clients was inserted"))
-			.catch((e) => res.status(500).send(e));
+router.post("/clients", async (req, res) => {
+	try {
+		await db.query("BEGIN");
+		if (Array.isArray(req.body)) {
+			const promises = [];
+			req.body.forEach((element) => {
+				const promiseResult = saveUser(element);
+				promises.push(promiseResult);
+			});
+			Promise.all(promises)
+				.then(() => res.status(200).send("All clients were inserted"))
+				.catch((e) => res.status(500).send(e));
+		} else {
+			saveUser(req.body)
+				.then(() => res.status(200).send("One clients was inserted"))
+				.catch((e) => res.status(500).send(e));
+		}
+		await db.query("COMMIT");
+	} catch (error) {
+		await db.query("ROLLBACK");
 	}
 });
 
