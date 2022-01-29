@@ -18,9 +18,9 @@ router.get("/clients", (req, res) => {
 const saveUser = async (element) => {
 	return new Promise((resolve, reject) => {
 		const newClientDateAdded = element.date_added;
-		if (!newClientDateAdded || isNaN(!newClientDateAdded)) {
+		if (!newClientDateAdded) {
 			return reject(
-				"The field date added is empty or is not a date, it is require to have a date"
+				"The field date added is empty, it is require to have a date"
 			);
 		}
 		const newClientDateAddedIso = new Date(
