@@ -60,8 +60,11 @@ const saveUser = async (element) => {
 		const newClientReferringAgency = element.referring_agency;
 
 		const createQuery =
-			"INSERT INTO clients (date_added, name,  bikes_needed, phone_number, booking_status,residency_status, country_of_origin, time_in_scotland, language_spoken, english_speaker, english_skill_level, gender, date_of_birth, postcode, referring_agency) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) "
-			+" ON CONFLICT (phone_number) DO UPDATE SET date_added = EXCLUDED.date_added, name = EXCLUDED.name, bikes_needed = EXCLUDED.bikes_needed, booking_status = EXCLUDED.booking_status, residency_status = EXCLUDED.residency_status, country_of_origin = EXCLUDED.country_of_origin, time_in_scotland = EXCLUDED.time_in_scotland, language_spoken = EXCLUDED.language_spoken, english_speaker = EXCLUDED.english_speaker, english_skill_level = EXCLUDED.english_skill_level, gender = EXCLUDED.gender, date_of_birth = EXCLUDED.date_of_birth, postcode = EXCLUDED.postcode, referring_agency = EXCLUDED.referring_agency" ;
+			"INSERT INTO clients (date_added, name,  bikes_needed, phone_number, booking_status,residency_status, country_of_origin, time_in_scotland, language_spoken, english_speaker, english_skill_level, gender, date_of_birth, postcode, referring_agency)" +
+			"VALUES" +
+			"($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)" +
+			"ON CONFLICT (phone_number)" +
+			"DO UPDATE SET date_added = EXCLUDED.date_added, name = EXCLUDED.name, bikes_needed = EXCLUDED.bikes_needed, booking_status = EXCLUDED.booking_status, residency_status = EXCLUDED.residency_status, country_of_origin = EXCLUDED.country_of_origin, time_in_scotland = EXCLUDED.time_in_scotland, language_spoken = EXCLUDED.language_spoken, english_speaker = EXCLUDED.english_speaker, english_skill_level = EXCLUDED.english_skill_level, gender = EXCLUDED.gender, date_of_birth = EXCLUDED.date_of_birth, postcode = EXCLUDED.postcode, referring_agency = EXCLUDED.referring_agency";
 		db.query(createQuery, [
 			newClientDateAddedIso,
 			newClientName,
