@@ -33,15 +33,15 @@ const saveUser = async (element) => {
 			);
 		}
 		const newClientBikes = element.bikes_needed;
-		if (!newClientBikes || isNaN(!newClientBikes)) {
+		if (!newClientBikes || isNaN(newClientBikes)) {
 			return reject(
 				"The field bikes is empty or is not a number, it is require to have a numerical value"
 			);
 		}
 		const newClientPhoneNumber = element.phone_number;
-		if (!newClientPhoneNumber || isNaN(!newClientPhoneNumber)) {
+		if (!newClientPhoneNumber) {
 			return reject(
-				"The field phone number is empty or is not a number, it is require to have a numerical value"
+				"The field phone number is empty, it is require to have a numerical value"
 			);
 		}
 		const newClientBookingStatus = element.booking_status;
@@ -89,9 +89,9 @@ const saveUser = async (element) => {
 	});
 };
 
-router.post("/clients", async (req, res) => {
-	try {
-		await db.query("BEGIN");
+router.post("/clients",/*  {async} */ (req, res) => {
+	// try {
+		// await db.query("BEGIN");
 		if (Array.isArray(req.body)) {
 			const promises = [];
 			req.body.forEach((element) => {
@@ -106,10 +106,10 @@ router.post("/clients", async (req, res) => {
 				.then(() => res.status(200).send("One clients was inserted"))
 				.catch((e) => res.status(500).send(e));
 		}
-		await db.query("COMMIT");
-	} catch (error) {
-		await db.query("ROLLBACK");
-	}
+	// 	await db.query("COMMIT");
+	// } catch (error) {
+	// 	await db.query("ROLLBACK");
+	// }
 });
 
 export default router;
