@@ -24,5 +24,6 @@ CREATE TABLE clients
     gender INT,
     date_of_birth DATE,
     postcode VARCHAR(20),
-    referring_agency VARCHAR(120)
+    referring_agency VARCHAR(120),
+    UNIQUE (phone_number)
 );
