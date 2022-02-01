@@ -4,50 +4,35 @@ import Form from "react-bootstrap/Form";
 
 const Login = () => {
 	return (
-		<form>
-			<div className="Login-page">
-				<div className="flex-container">
-					<div className="img">
-						<div className="container-image">
-							<img src={logoBike} alt="bike logo" />
-						</div>
+		<form className="flex-container">
+			<img src={logoBike} alt="bike logo" className="container-image" />
 
-						<h4>sign in</h4>
-					</div>
-					<div>
-						<>
-							<Form.Floating className="mb-3">
-								<Form.Control
-									id="floatingInputCustom"
-									type="email"
-									placeholder="name@example.com"
-								/>
-								<label htmlFor="floatingInputCustom">Email address</label>
-							</Form.Floating>
-							<Form.Floating>
-								<Form.Control
-									id="floatingPasswordCustom"
-									type="password"
-									placeholder="Password"
-								/>
-								<label htmlFor="floatingPasswordCustom">Password</label>
-							</Form.Floating>
-						</>
-					</div>
+			<h1 className="fs-5">Sign in</h1>
 
-					<div className="button">
-						<button className="login-button" type="button">
-							Log in
-						</button>
-					</div>
+			<Form.FloatingLabel controlId="email" label="Email address">
+				<Form.Control type="email" placeholder="Email address" />
 
-					<div className="signup">
-						<p className="mb-0 me-2">
-							you Don't have an account?
-							<a href= "" > signup </a>
-						</p>
-					</div>
-				</div>
+			</Form.FloatingLabel>
+			<Form.Floating>
+				<Form.Control
+					id="floatingPasswordCustom"
+					type="password"
+					placeholder="Password"
+				/>
+				<label htmlFor="floatingPasswordCustom">Password</label>
+			</Form.Floating>
+
+			<div className="button">
+				<button className="login-button" type="button">
+					Log in
+				</button>
+			</div>
+
+			<div className="signup">
+				<p className="mb-0 me-2">
+					you Don't have an account?
+					<a href=""> signup </a>
+				</p>
 			</div>
 		</form>
 	);
