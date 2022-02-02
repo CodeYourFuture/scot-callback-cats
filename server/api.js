@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { route } from "express/lib/application";
 import db from "./db";
 
 const router = new Router();
@@ -94,6 +95,82 @@ router.post("/clients", (req, res) => {
 			.then(() => res.status(200).send("One client was inserted"))
 			.catch((e) => res.status(500).send(e));
 	}
+});
+
+const editUser = (client, clientId) => {
+	const {
+		dateAdded,
+		name,
+		bikesNeeded,
+		phoneNumber,
+		bookingStatus,
+		residencyStatus,
+		countryOfOrigin,
+		timeInScotland,
+		languageSpoken,
+		englishSpeaker,
+		englishSkillLevel,
+		gender,
+		dateOfBirth,
+		postcode,
+		referringAgency,
+		pickUpDate,
+		isDecline,
+	} = client;
+
+	//Is possible to have this validation to the update?, I found that the timestamp columns complaint if they are null.
+	const validationErrors = [];
+
+	if (!dateAdded) {
+		validationErrors.push("The field dateAdded is empty. It is required to have a date");
+	}
+	if (!name) {
+		validationErrors.push("The field name is empty. It is requires to have a name");
+	}
+	if (!bikesNeeded || isNaN(Number(bikesNeeded))) {
+		validationErrors.push("The field bikesNeeded is empty or it is not a number. It is required to have a numerical value");
+	}
+	if (!phoneNumber) {
+		validationErrors.push("The field phoneNumber is empty. It is required to have a value");
+	}
+
+	if (validationErrors.length) {
+		return Promise.reject(validationErrors);
+	}
+
+	const createQuery =
+	"INSERT INTO clients (date_added, name,  bikes_needed, phone_number, booking_status,residency_status, country_of_origin, time_in_scotland, language_spoken, english_speaker, english_skill_level, gender, date_of_birth, postcode, referring_agency)" +
+	"VALUES" +
+	"($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)" +
+	"WHERE client_id == $18";
+
+	db.query(createQuery,
+		[dateAdded,
+		name,
+		bikesNeeded,
+		phoneNumber,
+		bookingStatus,
+		residencyStatus,
+		countryOfOrigin,
+		timeInScotland,
+		languageSpoken,
+		englishSpeaker,
+		englishSkillLevel,
+		gender,
+		dateOfBirth,
+		postcode,
+		referringAgency,
+		pickUpDate,
+		isDecline,
+		clientId,
+	]);
+};
+
+route.put("/clients/:clientId", (req, res) => {
+	const { clientId } = req.params;
+		editUser(req.body, clientId)
+	.then(() => res.status(200).send("Client updated"))
+	.catch((e) => res.status(500).send(e));
 });
 
 export default router;
