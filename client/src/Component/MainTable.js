@@ -74,7 +74,7 @@ const MainTable = (props) => {
 					{clientData.map((client) => {
 						return (
 							<tr key={client.client_id}>
-								<td><Checkbox isChecked={props.checkedCheckboxes.find((id)=>id===client.client_id)!== undefined} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
+								<td><Checkbox isChecked={props.checkedCheckboxes.includes(client.client_id)} label={client.name} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
 								<td>{client.client_id}</td>
 								<td>{new Date(client.date_added).toLocaleString()}</td>
 								<td>{client.name}</td>
