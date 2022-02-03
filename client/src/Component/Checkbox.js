@@ -7,7 +7,7 @@ const Checkbox = (props) => {
 
     return (
         <Form>
-            <Form.Check type="checkbox" id="checkbox" aria-label="checkbox" defaultChecked= {props.isChecked} onChange={(event) => props.onChange(event.target.checked)} />
+            <Form.Check type="checkbox" aria-label={props.label} defaultChecked= {props.isChecked} onChange={(event) => props.onChange(event.target.checked)} />
         </Form>
     );
 };
@@ -15,4 +15,3 @@ const Checkbox = (props) => {
 
 export default Checkbox;
 
-// props.onChange(checked)
