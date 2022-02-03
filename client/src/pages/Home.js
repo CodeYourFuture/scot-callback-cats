@@ -26,7 +26,7 @@ export function Home() {
 	}, []);
 
 	return (
-		<main role="main">
+		<main role="main" className="container">
 			<div>
 				<img
 					className="logo"

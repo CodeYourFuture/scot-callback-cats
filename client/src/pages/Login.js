@@ -1,6 +1,6 @@
 import logoBike from "./logoBike.svg";
 import Form from "react-bootstrap/Form";
-
+import Button from "react-bootstrap/Button";
 
 const Login = () => {
 	return (
@@ -11,29 +11,12 @@ const Login = () => {
 
 			<Form.FloatingLabel controlId="email" label="Email address">
 				<Form.Control type="email" placeholder="Email address" />
-
 			</Form.FloatingLabel>
-			<Form.Floating>
-				<Form.Control
-					id="floatingPasswordCustom"
-					type="password"
-					placeholder="Password"
-				/>
-				<label htmlFor="floatingPasswordCustom">Password</label>
-			</Form.Floating>
+			<Form.FloatingLabel controlId="password" label="password">
+				<Form.Control type="password" placeholder="password" />
+			</Form.FloatingLabel>
 
-			<div className="button">
-				<button className="login-button" type="button">
-					Log in
-				</button>
-			</div>
-
-			<div className="signup">
-				<p className="mb-0 me-2">
-					you Don't have an account?
-					<a href=""> signup </a>
-				</p>
-			</div>
+			<Button variant="primary">Sign in </Button>
 		</form>
 	);
 };
