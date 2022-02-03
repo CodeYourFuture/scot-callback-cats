@@ -51,7 +51,6 @@ const MainTable = (props) => {
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
-						<th scope="col"><input type="checkbox" className="form-check-input" id="mastercheckbox" checked={masterChecked}></input></th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
