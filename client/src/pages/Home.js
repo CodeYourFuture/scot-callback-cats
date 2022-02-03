@@ -11,14 +11,14 @@ export function Home() {
 	const [message, setMessage] = useState("Loading...");
 	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
 
-	const onHandleSelectedUserState = (isSelected, client_id ) => {
+	const onHandleSelectedUserState = (isSelected, clientId ) => {
 		if (isSelected) {
 			setCheckedCheckboxes((previousCheckedCheckboxes) => {
-				return previousCheckedCheckboxes.concat(client_id);
+				return previousCheckedCheckboxes.concat(clientId);
 			});
 		} else {
 			setCheckedCheckboxes((previousCheckedCheckboxes) => {
-				return previousCheckedCheckboxes.filter((id) => client_id !== id);
+				return previousCheckedCheckboxes.filter((id) => clientId !== id);
 			});
 		}
 	};

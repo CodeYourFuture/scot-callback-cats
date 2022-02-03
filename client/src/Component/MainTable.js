@@ -7,7 +7,6 @@ const MainTable = (props) => {
 	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [masterChecked, setMasterChecked] = useState(true);
 
 
 	useEffect(() => {
@@ -51,6 +50,7 @@ const MainTable = (props) => {
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
+						<th scope="col"></th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
