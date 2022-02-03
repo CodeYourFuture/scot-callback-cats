@@ -9,16 +9,17 @@ import "./Home.css";
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
-	const [checkedCheckboxes, setChecked] = useState([]);
+	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
 
-	const onHandleSelectedUserState = (isSelected, userID ) => {
-		if (isSelected === true) {
-			checkedCheckboxes.push(userID);
-			setChecked([...checkedCheckboxes]);
+	const onHandleSelectedUserState = (isSelected, client_id ) => {
+		if (isSelected) {
+			setCheckedCheckboxes((previousCheckedCheckboxes) => {
+				return previousCheckedCheckboxes.concat(client_id);
+			});
 		} else {
-			const index = checkedCheckboxes.findIndex((id) => id === userID);
-			checkedCheckboxes.splice(index, 1);
-			setChecked([...checkedCheckboxes]);
+			setCheckedCheckboxes((previousCheckedCheckboxes) => {
+				return previousCheckedCheckboxes.filter((id) => client_id !== id);
+			});
 		}
 	};
 
@@ -36,14 +37,14 @@ export function Home() {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
-console.log(checkedCheckboxes);
+		}, 	[]);
+
 	return (
 		<main role="main">
 			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} />
 			<SMSModal checkedCheckboxes={checkedCheckboxes} />
 		</main>
 	);
-}
 
+}
 export default Home;
