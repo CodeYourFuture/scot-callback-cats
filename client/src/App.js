@@ -1,7 +1,5 @@
 import { Route, Switch } from "react-router-dom";
 import UploadFile from "./pages/UploadFile";
-
-
 import Home from "./pages/Home";
 
 const App = () => (
@@ -9,7 +7,6 @@ const App = () => (
 		<Route path="/" exact>
 			<Home />
 		</Route>
-
 		<Route path="/UploadFile/">
 			<UploadFile />
 		</Route>
