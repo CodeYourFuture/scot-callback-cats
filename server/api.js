@@ -39,24 +39,16 @@ const saveUser = (client) => {
 	const validationErrors = [];
 
 	if (!dateAdded) {
-		validationErrors.push(
-			"The field dateAdded is empty. It is required to have a date"
-		);
+		validationErrors.push("The field dateAdded is empty. It is required to have a date");
 	}
 	if (!name) {
-		validationErrors.push(
-			"The field name is empty. It is requires to have a name"
-		);
+		validationErrors.push("The field name is empty. It is requires to have a name");
 	}
 	if (!bikesNeeded || isNaN(Number(bikesNeeded))) {
-		validationErrors.push(
-			"The field bikesNeeded is empty or it is not a number. It is required to have a numerical value"
-		);
+		validationErrors.push("The field bikesNeeded is empty or it is not a number. It is required to have a numerical value");
 	}
 	if (!phoneNumber) {
-		validationErrors.push(
-			"The field phoneNumber is empty. It is required to have a value"
-		);
+		validationErrors.push("The field phoneNumber is empty. It is required to have a value");
 	}
 	if (isDeclined === undefined) {
 		validationErrors.push("The field isDeclined is empty");
@@ -130,32 +122,22 @@ const updateUser = (client, clientId) => {
 		pickUpDate,
 		isDeclined,
 	} = client;
-	console.log(client);
 	const validationErrors = [];
 
 	if (!dateAdded) {
-		validationErrors.push(
-			"The field dateAdded is empty. It is required to have a date"
-		);
+		validationErrors.push("The field dateAdded is empty. It is required to have a date");
 	}
 	if (!name) {
-		validationErrors.push(
-			"The field name is empty. It is requires to have a name"
-		);
+		validationErrors.push("The field name is empty. It is requires to have a name");
 	}
 	if (!bikesNeeded || isNaN(Number(bikesNeeded))) {
-		validationErrors.push(
-			"The field bikesNeeded is empty or it is not a number. It is required to have a numerical value"
-		);
+		validationErrors.push("The field bikesNeeded is empty or it is not a number. It is required to have a numerical value");
 	}
 	if (!phoneNumber) {
-		validationErrors.push(
-			"The field phoneNumber is empty. It is required to have a value"
-		);
+		validationErrors.push("The field phoneNumber is empty. It is required to have a value");
 	}
 
 	if (validationErrors.length) {
-		console.log("validation");
 		return Promise.reject(validationErrors);
 	}
 
