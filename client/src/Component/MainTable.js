@@ -64,6 +64,8 @@ const MainTable = () => {
 						<th scope="col">DOB</th>
 						<th scope="col">Postcode</th>
 						<th scope="col">Referring agency</th>
+						<th scope="col">Pick up date</th>
+						<th scope="col">Declined</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -86,6 +88,8 @@ const MainTable = () => {
 								<td>{new Date(client.date_of_birth).toLocaleDateString()}</td>
 								<td>{client.postcode}</td>
 								<td>{client.referring_agency}</td>
+								<td>{new Date(client.pick_up_date).toLocaleDateString()}</td>
+								<td>{client.is_declined}</td>
 							</tr>
 						);
 					})}
