@@ -24,7 +24,10 @@ CREATE TABLE clients
     gender VARCHAR(120),
     date_of_birth DATE,
     postcode VARCHAR(20),
-    referring_agency VARCHAR(120)
+    referring_agency VARCHAR(120),
+    pick_up_date TIMESTAMP,
+    is_declined BOOLEAN NOT NULL DEFAULT FALSE,
+    UNIQUE (phone_number)
 );
 
 CREATE TABLE booking_status 
