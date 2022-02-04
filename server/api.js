@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { route } from "express/lib/application";
 import db from "./db";
 
 const router = new Router();
@@ -97,7 +96,7 @@ router.post("/clients", (req, res) => {
 	}
 });
 
-const editUser = (client, clientId) => {
+const updateUser = (client, clientId) => {
 	const {
 		dateAdded,
 		name,
@@ -115,10 +114,9 @@ const editUser = (client, clientId) => {
 		postcode,
 		referringAgency,
 		pickUpDate,
-		isDecline,
+		isDeclined,
 	} = client;
-
-	//Is possible to have this validation to the update?, I found that the timestamp columns complaint if they are null.
+console.log(client);
 	const validationErrors = [];
 
 	if (!dateAdded) {
@@ -135,16 +133,18 @@ const editUser = (client, clientId) => {
 	}
 
 	if (validationErrors.length) {
-		return Promise.reject(validationErrors);
+		console.log("validation");
+		return Promise.reject (validationErrors);
+
 	}
 
 	const createQuery =
-	"INSERT INTO clients (date_added, name,  bikes_needed, phone_number, booking_status,residency_status, country_of_origin, time_in_scotland, language_spoken, english_speaker, english_skill_level, gender, date_of_birth, postcode, referring_agency)" +
-	"VALUES" +
-	"($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)" +
-	"WHERE client_id == $18";
+	"UPDATE clients " +
+	"SET " +
+	"date_added = $1, name = $2,  bikes_needed = $3, phone_number = $4, booking_status = $5,residency_status = $6, country_of_origin = $7, time_in_scotland = $8, language_spoken = $9, english_speaker = $10, english_skill_level = $11, gender = $12, date_of_birth = $13, postcode = $14, referring_agency = $15, pick_up_date = $16, is_declined = $17 " +
+	" WHERE client_id = $18";
 
-	db.query(createQuery,
+	return db.query(createQuery,
 		[dateAdded,
 		name,
 		bikesNeeded,
@@ -161,14 +161,14 @@ const editUser = (client, clientId) => {
 		postcode,
 		referringAgency,
 		pickUpDate,
-		isDecline,
+		isDeclined,
 		clientId,
 	]);
 };
 
-route.put("/clients/:clientId", (req, res) => {
+router.put("/clients/:clientId", (req, res) => {
 	const { clientId } = req.params;
-		editUser(req.body, clientId)
+	updateUser(req.body, clientId)
 	.then(() => res.status(200).send("Client updated"))
 	.catch((e) => res.status(500).send(e));
 });
