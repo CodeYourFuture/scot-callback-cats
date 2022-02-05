@@ -36,13 +36,16 @@ router.post("/clients", (req, res) => {
 router.post("/send-messages", (req, res) => {
 	const message = req.body.message;
 	const clientIds = req.body.ids;
-	const uniqueId = randomUUID();
+	const timeSent = new Date().toISOString();
 
-	clientIds.forEach((id) => {
-		console.log(`sending ${message} to ${id}`);
-		console.log(uniqueId);
-		return uniqueId;
+
+	clientIds.forEach((id)=>{
+		console.log("sending SMS to " + id);
+		randomUUID();
+		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4); UPDATE TABLE clients SET booking_status=2 WHERE client_id=$1";
+		db.query(createQuery, [id, message, true, timeSent]);
 	});
+
 	res.sendStatus(200);
 });
 
