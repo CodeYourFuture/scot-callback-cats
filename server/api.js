@@ -176,4 +176,12 @@ router.put("/clients/:clientId", (req, res) => {
 		.catch((e) => res.status(500).send(e));
 });
 
+router.get("/bookings", (req, res) =>{
+	db.query("SELECT * FROM clients WHERE pick_up_date between  Now () and (NOW () + interval '2 Weeks');")
+		.then((result) => res.json(result.rows))
+		.catch((e) => {
+			res.status(400).send(e);
+		});
+});
+
 export default router;
