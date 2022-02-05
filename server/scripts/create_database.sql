@@ -1,4 +1,4 @@
-DROP TABLE  IF EXISTS  users, clients, booking_status, residency_status CASCADE;
+DROP TABLE  IF EXISTS  users, clients, booking_status, residency_status, messages CASCADE;
 
 CREATE TABLE users
 (
@@ -24,10 +24,17 @@ CREATE TABLE clients
     gender VARCHAR(120),
     date_of_birth DATE,
     postcode VARCHAR(20),
-    referring_agency VARCHAR(120),
-    pick_up_date TIMESTAMP,
-    is_declined BOOLEAN NOT NULL DEFAULT FALSE,
-    UNIQUE (phone_number)
+    referring_agency VARCHAR(120)
+    unique_id CHAR(36) UNIQUE
+);
+
+CREATE TABLE messages
+(	
+    client_id INT,
+	message VARCHAR,
+	successfully_sent BOOLEAN,
+    time_sent TIMESTAMP,
+    booking_status INT 
 );
 
 CREATE TABLE booking_status 
@@ -53,3 +60,6 @@ ADD FOREIGN KEY (booking_status) REFERENCES booking_status(booking_status_id);
 
 ALTER TABLE clients
 ADD FOREIGN KEY (residency_status) REFERENCES residency_status(residency_status_id);
+
+ALTER TABLE messages ADD FOREIGN KEY (client_id) REFERENCES clients (client_id);
+
