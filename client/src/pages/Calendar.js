@@ -44,23 +44,29 @@ const Calendar = () => {
 
 	return (
 		<div className="container">
-			<div className="d-flex justify-content-center">
-				{bookingsData.map((date, index) => {
-					return (
-						<div key={index} className="">
-							<div className="card" style={{ width: "18rem"}}>
-								<ul className="list-group list-group-flush">
-									<li className="list-group-item">
-										<div>{date.name}</div>
-										<div>{new Date(date.pick_up_date).toLocaleString()}</div>
-										<div> Bikes amount {date.bikes_needed}</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					);
-				})}
-			</div>
+		<div className="table-responsive-xxl">
+			<table className="table align-middle  table-striped table-hover styled-table border">
+				<caption className="visually-hidden">Clients</caption>
+				<thead className="table-dark">
+					<tr>
+						<th scope="col">Date</th>
+						<th scope="col">Name</th>
+						<th scope="col">Amount of Bikes</th>
+					</tr>
+				</thead>
+				<tbody>
+					{bookingsData.map((data) => {
+						return (
+							<tr key={data.client_id}>
+								<td>{new Date(data.pick_up_date).toLocaleString("en-US", { day: "numeric", weekday: "long" })}</td>
+								<td>{data.name}</td>
+								<td>{data.gender}</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+		</div>
 		</div>
 	);
 };

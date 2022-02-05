@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import MainTable from "../Component/MainTable";
 import SMSModal from "../Component/SMSModal";
 import "./Home.css";
@@ -19,7 +20,7 @@ export function Home() {
 		}
 	};
 
-	
+
 	return (
 		<main role="main">
 			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} />
