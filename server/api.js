@@ -39,16 +39,24 @@ const saveUser = (client) => {
 	const validationErrors = [];
 
 	if (!dateAdded) {
-		validationErrors.push("The field dateAdded is empty. It is required to have a date");
+		validationErrors.push(
+			"The field dateAdded is empty. It is required to have a date"
+		);
 	}
 	if (!name) {
-		validationErrors.push("The field name is empty. It is requires to have a name");
+		validationErrors.push(
+			"The field name is empty. It is requires to have a name"
+		);
 	}
 	if (!bikesNeeded || isNaN(Number(bikesNeeded))) {
-		validationErrors.push("The field bikesNeeded is empty or it is not a number. It is required to have a numerical value");
+		validationErrors.push(
+			"The field bikesNeeded is empty or it is not a number. It is required to have a numerical value"
+		);
 	}
 	if (!phoneNumber) {
-		validationErrors.push("The field phoneNumber is empty. It is required to have a value");
+		validationErrors.push(
+			"The field phoneNumber is empty. It is required to have a value"
+		);
 	}
 	if (isDeclined === undefined) {
 		validationErrors.push("The field isDeclined is empty");
@@ -125,16 +133,24 @@ const updateUser = (client, clientId) => {
 	const validationErrors = [];
 
 	if (!dateAdded) {
-		validationErrors.push("The field dateAdded is empty. It is required to have a date");
+		validationErrors.push(
+			"The field dateAdded is empty. It is required to have a date"
+		);
 	}
 	if (!name) {
-		validationErrors.push("The field name is empty. It is requires to have a name");
+		validationErrors.push(
+			"The field name is empty. It is requires to have a name"
+		);
 	}
 	if (!bikesNeeded || isNaN(Number(bikesNeeded))) {
-		validationErrors.push("The field bikesNeeded is empty or it is not a number. It is required to have a numerical value");
+		validationErrors.push(
+			"The field bikesNeeded is empty or it is not a number. It is required to have a numerical value"
+		);
 	}
 	if (!phoneNumber) {
-		validationErrors.push("The field phoneNumber is empty. It is required to have a value");
+		validationErrors.push(
+			"The field phoneNumber is empty. It is required to have a value"
+		);
 	}
 
 	if (validationErrors.length) {
@@ -174,6 +190,20 @@ router.put("/clients/:clientId", (req, res) => {
 	updateUser(req.body, clientId)
 		.then(() => res.status(200).send("Client updated"))
 		.catch((e) => res.status(500).send(e));
+});
+
+router.get("/bookings", (req, res) => {
+	const filter = req.query.filter;
+	let query = "SELECT * FROM clients WHERE pick_up_date IS NOT NULL;";
+	if (filter === "2weeks") {
+		query =
+			"SELECT * FROM clients WHERE pick_up_date between  Now () and (NOW () + interval '2 Weeks');";
+	}
+	db.query(query)
+		.then((result) => res.json(result.rows))
+		.catch((e) => {
+			res.status(400).send(e);
+		});
 });
 
 export default router;
