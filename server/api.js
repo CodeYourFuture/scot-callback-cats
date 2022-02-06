@@ -38,15 +38,25 @@ router.post("/send-messages", (req, res) => {
 	const clientIds = req.body.ids;
 	const timeSent = new Date().toISOString();
 
-
+	const dbQueries = [];
 	clientIds.forEach((id)=>{
 		console.log("sending SMS to " + id);
-		randomUUID();
-		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4); UPDATE TABLE clients SET booking_status=2 WHERE client_id=$1";
-		db.query(createQuery, [id, message, true, timeSent]);
+		const uuid = randomUUID();
+		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4)";
+		dbQueries.push(db.query(createQuery, [id, message, true, timeSent]));
+
+		const updateQuery = "UPDATE clients SET booking_status=2, uuid=$1 WHERE client_id=";
+		dbQueries.push(db.query(updateQuery, [uuid, id]));
 	});
 
-	res.sendStatus(200);
+	Promise.allSettled(dbQueries)
+  		.then((results) => {
+			results
+			.filter((result) => result.status === "rejected")
+			.forEach((result) => console.error("database error in sending SMS",result.reason)
+			);
+		});
+		res.sendStatus(200);
 });
 
 

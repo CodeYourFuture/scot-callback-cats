@@ -25,16 +25,16 @@ CREATE TABLE clients
     date_of_birth DATE,
     postcode VARCHAR(20),
     referring_agency VARCHAR(120)
-    unique_id CHAR(36) UNIQUE
+    uuid CHAR(36) UNIQUE
 );
 
 CREATE TABLE messages
 (	
+    id SERIAL PRIMARY KEY,
     client_id INT,
 	message VARCHAR,
 	successfully_sent BOOLEAN,
-    time_sent TIMESTAMP,
-    booking_status INT 
+    time_sent TIMESTAMP
 );
 
 CREATE TABLE booking_status 
