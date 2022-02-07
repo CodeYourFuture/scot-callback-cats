@@ -43,30 +43,39 @@ const Calendar = () => {
 	}
 
 	return (
-		<div className="container">
-		<div className="table-responsive-xxl">
-			<table className="table align-middle  table-striped table-hover styled-table border">
-				<caption className="visually-hidden">Clients</caption>
-				<thead className="table-dark">
-					<tr>
-						<th scope="col">Date</th>
-						<th scope="col">Name</th>
-						<th scope="col">Amount of Bikes</th>
-					</tr>
-				</thead>
-				<tbody>
-					{bookingsData.map((data) => {
-						return (
-							<tr key={data.client_id}>
-								<td>{new Date(data.pick_up_date).toLocaleString("en-US", { day: "numeric", weekday: "long" })}</td>
-								<td>{data.name}</td>
-								<td>{data.gender}</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</table>
-		</div>
+		<div className="container py-5">
+			<div className="table-responsive-xxl ">
+				<div className="p-4  bg-dark rounded-3 no-border"> <h2 className="text-light bg-dark">Calendar for the next 2 week</h2></div>
+				<table className="table align-middle table-striped table-hover">
+					<caption className="visually-hidden">Clients</caption>
+					<thead className="table-dark">
+						<tr>
+							<th scope="col">Date</th>
+							<th scope="col">Name</th>
+							<th scope="col">Amount of Bikes</th>
+						</tr>
+					</thead>
+					<tbody>
+						{bookingsData.map((data) => {
+							return (
+								<tr key={data.client_id}>
+									<td>
+										{new Date(data.pick_up_date).toLocaleString("en-US", {
+											weekday: "long",
+										})}
+										<span className="pe-0.5"> </span>
+										{new Date(data.pick_up_date).toLocaleString("en-US", {
+											day: "numeric",
+										})}
+									</td>
+									<td>{data.name}</td>
+									<td>{data.bikes_needed}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	);
 };
