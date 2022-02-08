@@ -1,21 +1,31 @@
 import MainTable from "../Component/MainTable";
+import SMSModal from "../Component/SMSModal";
 import "./Home.css";
 
+
+
 export function Home() {
+	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
+
+	const onHandleSelectedUserState = (isSelected, clientId ) => {
+		if (isSelected) {
+			setCheckedCheckboxes((previousCheckedCheckboxes) => {
+				return previousCheckedCheckboxes.concat(clientId);
+			});
+		} else {
+			setCheckedCheckboxes((previousCheckedCheckboxes) => {
+				return previousCheckedCheckboxes.filter((id) => clientId !== id);
+			});
+		}
+	};
+
+
 	return (
 		<main role="main">
-			<div>
-				<h1 className="message" data-qa="message">
-					{message}
-				</h1>
-				<Link to="/about/this/site">About</Link>
-				<div>
-					<Link to="/UploadFile/">Files Page</Link>
-				</div>
-			</div>
-			<MainTable />
+			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} />
+			<SMSModal checkedCheckboxes={checkedCheckboxes} />
 		</main>
 	);
-}
 
+}
 export default Home;

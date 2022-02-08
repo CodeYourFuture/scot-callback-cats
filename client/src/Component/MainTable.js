@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
+import Checkbox from "./Checkbox.js";
 
-const MainTable = () => {
+const MainTable = (props) => {
 	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -48,6 +50,7 @@ const MainTable = () => {
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
+						<th scope="col"></th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
@@ -72,6 +75,7 @@ const MainTable = () => {
 					{clientData.map((client) => {
 						return (
 							<tr key={client.client_id}>
+								<td><Checkbox isChecked={props.checkedCheckboxes.includes(client.client_id)} label={client.name} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
 								<td>{client.client_id}</td>
 								<td>{new Date(client.date_added).toLocaleString()}</td>
 								<td>{client.name}</td>
@@ -100,3 +104,5 @@ const MainTable = () => {
 };
 
 export default MainTable;
+
+
