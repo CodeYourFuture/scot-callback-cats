@@ -42,39 +42,55 @@ const Calendar = () => {
 		return <Alert variant="danger">{error}</Alert>;
 	}
 
+	const pickUpDates = [];
+
+	bookingsData.forEach((client) => {
+		let found = pickUpDates.find((el) => el.date == client.pick_up_date);
+		if (found) {
+			found.clients.push(client);
+		} else {
+			pickUpDates.push({ date: client.pick_up_date, clients: [client] });
+		}
+	});
+
 	return (
 		<div className="container py-5">
 			<div className="p-4  bg-dark rounded-3 no-border">
 				{" "}
 				<h2 className="text-light bg-dark">Bike pick-up calendar</h2>
 			</div>
-			{bookingsData.map((data) => {
+			{pickUpDates.map((data) => {
 				return (
-					<React.Fragment key={data.client_id}>
+					<React.Fragment key={data.date}>
+						<h2 className="text-light bg-dark">
+							{new Date(data.date).toLocaleString("en-US", {
+								weekday: "long",
+								month: "long",
+								day: "numeric",
+							})}
+						</h2>
 						<div className="table-responsive-xxl ">
 							<table className="table align-middle table-striped table-hover">
 								<caption className="visually-hidden">Clients</caption>
 								<thead className="table-dark">
 									<tr>
-										<th scope="col">Date</th>
+										<th scope="col">Time</th>
 										<th scope="col">Name</th>
 										<th scope="col">Amount of Bikes</th>
 									</tr>
 								</thead>
 								<tbody>
-								<tr key={data.client_id}>
-                                    <td>
-                                        {new Date(data.pick_up_date).toLocaleString("en-US", {
-                                            weekday: "long",
-                                        })}
-                                        <span className="pe-0.5"> </span>
-                                        {new Date(data.pick_up_date).toLocaleString("en-US", {
-                                            day: "numeric",
-                                        })}
-                                    </td>
-                                    <td>{data.name}</td>
-                                    <td>{data.bikes_needed}</td>
-                                </tr>
+									{data.clients.map((client) => {
+										return (
+											<tr key={client.client_id}>
+												<td>
+													{new Date(data.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+													</td>
+												<td>{client.name}</td>
+												<td>{client.bikes_needed}</td>
+											</tr>
+										);
+									})}
 								</tbody>
 							</table>
 						</div>
