@@ -124,7 +124,7 @@ router.post("/send-messages", (req, res) => {
 		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4)";
 		dbQueries.push(db.query(createQuery, [id, message, true, timeSent]));
 
-		const updateQuery = "UPDATE clients SET booking_status=2, uuid=$1 WHERE client_id=";
+		const updateQuery = "UPDATE clients SET booking_status=2, uuid=$1 WHERE client_id=$2";
 		dbQueries.push(db.query(updateQuery, [uuid, id]));
 	});
 
