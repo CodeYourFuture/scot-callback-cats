@@ -130,12 +130,14 @@ router.post("/send-messages", (req, res) => {
 
 	Promise.allSettled(dbQueries)
   		.then((results) => {
-			results
-			.filter((result) => result.status === "rejected")
-			.forEach((result) => console.error("database error in sending SMS",result.reason)
-			);
+			let filteredResults = results.filter((result) => result.status === "rejected");
+			if (filteredResults.length > 0) {
+				res.status(400).send("error inserting into database");
+			} else {
+				res.sendStatus(200);
+			}
 		});
-		res.sendStatus(200);
+
 });
 
 const updateUser = (client, clientId) => {
