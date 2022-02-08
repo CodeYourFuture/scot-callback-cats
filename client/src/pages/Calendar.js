@@ -84,7 +84,7 @@ const Calendar = () => {
 										return (
 											<tr key={client.client_id}>
 												<td>
-													{new Date(data.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+													{new Date(data.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}
 													</td>
 												<td>{client.name}</td>
 												<td>{client.bikes_needed}</td>
