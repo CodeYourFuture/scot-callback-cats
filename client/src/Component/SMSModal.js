@@ -1,14 +1,16 @@
-/* eslint-disable jsx-a11y/label-has-for */
+
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import e from "express";
+
+
 
 
 function SMSModal(props) {
     const [show, setShow] = useState(false);
     const hideModal = () => setShow(false);
     const showModal = () => setShow(true);
+
     let localMessage = localStorage.getItem("message");
     if (localMessage === null) {
       localMessage = "Hi, this is Bikes For Refugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
@@ -23,29 +25,24 @@ function SMSModal(props) {
 
     function handleSubmit () {
 
-      // const newMessageRequest = {
-      //   ids : props.checkedCheckboxes,
-      //   // message: e.target.value,
-      // };
+      const newMessageRequest = {
+          ids : props.checkedCheckboxes,
+          message: message,
+        };
 
-      // fetch ("/api/send-messages", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(newMessageRequest),
-      // })
-      // .then((response) => response.json());
-      //     // if(response.status) {
-
-      //     // } else {
-
-      //     // }
-
-      console.log(props.checkedCheckboxes);
+      fetch ("/api/send-messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newMessageRequest),
+        })
+        .then((response) => {
+          return response.json();
+        });
       console.log(newMessageRequest);
       hideModal();
-      }
+  }
 
 
     return (

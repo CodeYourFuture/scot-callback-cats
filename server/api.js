@@ -134,7 +134,7 @@ router.post("/send-messages", (req, res) => {
 			if (filteredResults.length > 0) {
 				res.status(400).send("error inserting into database");
 			} else {
-				res.sendStatus(200);
+				res.status(201).send({ status: "Okay" });
 			}
 		});
 
