@@ -47,22 +47,24 @@ const Calendar = () => {
 		let found = pickUpDates.find((element) => element.date == client.pick_up_date);
 		if (found) {
 			found.clients.push(client);
+			found.clients.sort((a, b) => new Date(a.pick_up_date) - new Date(b.pick_up_date));
 		} else {
 			pickUpDates.push({ date: client.pick_up_date, clients: [client] });
 		}
 	});
+	pickUpDates.sort((a, b) => new Date(a.date) - new Date(b.date));
 
 	return (
 		<div className="container py-5">
 			<div className="p-4  bg-dark rounded-3 no-border">
 				{" "}
-				<h2 className="text-light bg-dark">Bike pick-up calendar</h2>
+				<h1 className="text-light bg-dark">Bike pick-up calendar</h1>
 			</div>
 			{pickUpDates.map((data) => {
 				return (
 					<React.Fragment key={data.date}>
-						<h2 className="text-light bg-dark">
-							{new Date(data.date).toLocaleString("en-US", {
+						<h2 className="mt-4">
+							{new Date(data.date).toLocaleString("en-GB", {
 								weekday: "long",
 								month: "long",
 								day: "numeric",
@@ -83,7 +85,7 @@ const Calendar = () => {
 										return (
 											<tr key={client.client_id}>
 												<td>
-													{new Date(data.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}
+													{new Date(data.date).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true })}
 													</td>
 												<td>{client.name}</td>
 												<td>{client.bikes_needed}</td>
