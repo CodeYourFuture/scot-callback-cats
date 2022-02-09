@@ -26,6 +26,7 @@ export function Home() {
 			.then((data) => {
 				setClientData(data);
 				setError(null);
+				setCheckedCheckboxes([]);
 			})
 			.catch((err) => {
 				setError(err.message);
