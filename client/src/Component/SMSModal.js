@@ -26,7 +26,7 @@ function SMSModal(props) {
     function handleSubmit () {
 
       const newMessageRequest = {
-          ids : props.checkedCheckboxes,
+          ids : props.selectedClients,
           message: message,
         };
 
@@ -48,7 +48,7 @@ function SMSModal(props) {
 
     return (
       <>
-        <Button variant="primary" onClick={showModal} disabled={props.checkedCheckboxes.length === 0}>
+        <Button variant="primary" onClick={showModal} disabled={props.selectedClients.length === 0}>
           Send SMS
         </Button>
 

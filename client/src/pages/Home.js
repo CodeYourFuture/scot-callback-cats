@@ -6,13 +6,13 @@ import React, { useState, useEffect } from "react";
 
 
 export function Home() {
-	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
+	const [selectedClients, setselectedClients] = useState([]);
 	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
 
-	const loadUserData = () => {
+	const loadClientData = () => {
 		setIsLoading(true);
 		fetch("/api/clients")
 			.then((response) => {
@@ -26,7 +26,7 @@ export function Home() {
 			.then((data) => {
 				setClientData(data);
 				setError(null);
-				setCheckedCheckboxes([]);
+				setselectedClients([]);
 			})
 			.catch((err) => {
 				setError(err.message);
@@ -37,29 +37,29 @@ export function Home() {
 	};
 
 	useEffect(() => {
-		loadUserData();
+		loadClientData();
 	}, []);
 
 	const onHandleSelectedUserState = (isSelected, clientId ) => {
 		if (isSelected) {
-			setCheckedCheckboxes((previousCheckedCheckboxes) => {
-				return previousCheckedCheckboxes.concat(clientId);
+			setselectedClients((previousselectedClients) => {
+				return previousselectedClients.concat(clientId);
 			});
 		} else {
-			setCheckedCheckboxes((previousCheckedCheckboxes) => {
-				return previousCheckedCheckboxes.filter((id) => clientId !== id);
+			setselectedClients((previousselectedClients) => {
+				return previousselectedClients.filter((id) => clientId !== id);
 			});
 		}
 	};
 
 	const onSMSSent = () =>  {
-		loadUserData();
+		loadClientData();
 	};
 
 	return (
 		<main role="main">
-			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
-			<SMSModal checkedCheckboxes={checkedCheckboxes} onSMSSent={onSMSSent} />
+			<MainTable selectedClients={selectedClients} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
+			<SMSModal selectedClients={selectedClients} onSMSSent={onSMSSent} />
 		</main>
 	);
 
