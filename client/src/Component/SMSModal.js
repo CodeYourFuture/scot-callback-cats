@@ -38,10 +38,11 @@ function SMSModal(props) {
           body: JSON.stringify(newMessageRequest),
         })
         .then((response) => {
+          hideModal();
+          props.onSMSSent();
           return response.json();
         });
       console.log(newMessageRequest);
-      hideModal();
   }
 
 

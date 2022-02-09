@@ -12,7 +12,7 @@ export function Home() {
 	const [isLoading, setIsLoading] = useState(false);
 
 
-	useEffect(() => {
+	const loadUserData = () => {
 		setIsLoading(true);
 		fetch("/api/clients")
 			.then((response) => {
@@ -33,6 +33,10 @@ export function Home() {
 			.finally(() => {
 				setIsLoading(false);
 			});
+	};
+
+	useEffect(() => {
+		loadUserData();
 	}, []);
 
 	const onHandleSelectedUserState = (isSelected, clientId ) => {
@@ -47,11 +51,14 @@ export function Home() {
 		}
 	};
 
+	const onSMSSent = () =>  {
+		loadUserData();
+	};
 
 	return (
 		<main role="main">
 			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
-			<SMSModal checkedCheckboxes={checkedCheckboxes} />
+			<SMSModal checkedCheckboxes={checkedCheckboxes} onSMSSent={onSMSSent} />
 		</main>
 	);
 
