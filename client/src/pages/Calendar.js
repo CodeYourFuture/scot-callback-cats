@@ -75,9 +75,9 @@ const Calendar = () => {
 								<caption className="visually-hidden">Clients</caption>
 								<thead className="table-dark">
 									<tr>
-										<th scope="col">Time</th>
-										<th scope="col">Name</th>
-										<th scope="col">Amount of Bikes</th>
+										<th scope="col-1">Time</th>
+										<th scope="col-1">Name</th>
+										<th scope="col-1">Amount of Bikes</th>
 									</tr>
 								</thead>
 								<tbody>
