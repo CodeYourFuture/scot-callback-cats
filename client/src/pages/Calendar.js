@@ -12,14 +12,13 @@ const Calendar = () => {
 			.then((response) => {
 				if (!response.ok) {
 					throw Error(
-						"There was an error getting the calendar data, Please try again"
+						"There was an error getting the calendar data. Please try again."
 					);
 				}
 				return response.json();
 			})
 			.then((data) => {
 				setBookingsData(data);
-				setError(null);
 			})
 			.catch((err) => {
 				setError(err.message);
@@ -41,11 +40,11 @@ const Calendar = () => {
 	if (error != null) {
 		return <Alert variant="danger">{error}</Alert>;
 	}
-
+// Each element has the structure { date: Date, clients: [] }
 	const pickUpDates = [];
 
 	bookingsData.forEach((client) => {
-		let found = pickUpDates.find((el) => el.date == client.pick_up_date);
+		let found = pickUpDates.find((element) => element.date == client.pick_up_date);
 		if (found) {
 			found.clients.push(client);
 		} else {
