@@ -1,38 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
 import Checkbox from "./Checkbox.js";
 
 const MainTable = (props) => {
-	const [clientData, setClientData] = useState([]);
-	const [error, setError] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
 
 
-	useEffect(() => {
-		setIsLoading(true);
-		fetch("/api/clients")
-			.then((response) => {
-				if (!response.ok) {
-					throw Error(
-						"There was an error getting the customer data, Please try again"
-					);
-				}
-				return response.json();
-			})
-			.then((data) => {
-				setClientData(data);
-				setError(null);
-			})
-			.catch((err) => {
-				setError(err.message);
-			})
-			.finally(() => {
-				setIsLoading(false);
-			});
-	}, []);
 
-	if (isLoading) {
+	if (props.isLoading) {
 		return (
 			<div className="d-flex justify-content-center">
 				<div className="spinner-grow">
@@ -41,8 +16,8 @@ const MainTable = (props) => {
 			</div>
 		);
 	}
-	if (error != null) {
-		return <Alert variant="danger">{error}</Alert>;
+	if (props.error != null) {
+		return <Alert variant="danger">{props.error}</Alert>;
 	}
 	return (
 		<div className="table-responsive-xxl">
@@ -72,7 +47,7 @@ const MainTable = (props) => {
 					</tr>
 				</thead>
 				<tbody>
-					{clientData.map((client) => {
+					{props.clientData.map((client) => {
 						return (
 							<tr key={client.client_id}>
 								<td><Checkbox isChecked={props.checkedCheckboxes.includes(client.client_id)} label={client.name} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
