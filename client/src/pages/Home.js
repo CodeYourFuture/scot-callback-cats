@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 
 export function Home() {
-	const [selectedClients, setselectedClients] = useState([]);
+	const [selectedClients, setSelectedClients] = useState([]);
 	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ export function Home() {
 			.then((data) => {
 				setClientData(data);
 				setError(null);
-				setselectedClients([]);
+				setSelectedClients([]);
 			})
 			.catch((err) => {
 				setError(err.message);
@@ -42,12 +42,12 @@ export function Home() {
 
 	const onHandleSelectedUserState = (isSelected, clientId ) => {
 		if (isSelected) {
-			setselectedClients((previousselectedClients) => {
-				return previousselectedClients.concat(clientId);
+			setSelectedClients((previousSelectedClients) => {
+				return previousSelectedClients.concat(clientId);
 			});
 		} else {
-			setselectedClients((previousselectedClients) => {
-				return previousselectedClients.filter((id) => clientId !== id);
+			setSelectedClients((previousSelectedClients) => {
+				return previousSelectedClients.filter((id) => clientId !== id);
 			});
 		}
 	};
