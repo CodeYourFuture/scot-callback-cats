@@ -3,8 +3,6 @@ import MainTable from "../Component/MainTable";
 import SMSModal from "../Component/SMSModal";
 import "./Home.css";
 
-
-
 export function Home() {
 	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
 
