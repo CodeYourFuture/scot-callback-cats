@@ -56,7 +56,7 @@ const Calendar = () => {
 	pickUpDates.sort((a, b) => new Date(a.date) - new Date(b.date));
 
 	return (
-		<div className="container py-5">
+		<div className="container py-3">
 			<div className="p-4  bg-dark rounded-3 no-border">
 				{" "}
 				<h1 className="text-light bg-dark">Bike pick-up calendar</h1>
