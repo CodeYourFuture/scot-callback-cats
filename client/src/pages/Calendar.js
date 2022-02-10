@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Alert from "react-bootstrap/Alert";
+import "./Calendar.css";
 
 const Calendar = () => {
 	const [bookingsData, setBookingsData] = useState([]);
@@ -71,7 +72,7 @@ const Calendar = () => {
 							})}
 						</h2>
 						<div className="table-responsive-xxl ">
-							<table className="table align-middle table-striped table-hover caption-top">
+							<table id="fixing-width" className="table align-middle table-striped table-hover caption-top">
 								<caption className="visually-hidden">Clients</caption>
 								<thead className="table-dark">
 									<tr>

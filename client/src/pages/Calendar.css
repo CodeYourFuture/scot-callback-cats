@@ -1,0 +1,45 @@
+#fixing-width {
+    table-layout: fixed;
+    width: 1296px;       
+  }
+
+/* For devices with width of 555px and less, like phones */
+@media only screen and (max-width: 555px) {
+  #fixing-width {
+    width: 512px;       
+  } 
+} 
+
+/* For devices with width between 481px and 768px, like larger phones and portrait tablets */
+@media only screen and (min-width: 555px) {
+  #fixing-width {
+    width: 516px;       
+  }
+} 
+
+/* For devices with width between 769px and 992px, like landscape tablets and laptops */
+@media only screen and (min-width: 769px) {
+  #fixing-width {
+    width: 696px;       
+  }
+} 
+/* For devices with width between 992px and 1200px, like landscape tablets and laptops */
+@media only screen and (min-width: 992px) {
+  #fixing-width {
+    width: 936px;       
+  }
+} 
+
+/* For devices with width of 1200px and more, like desktop computers */
+@media only screen and (min-width: 1200px) {
+  #fixing-width {
+    width: 1116px;       
+  }
+} 
+
+/* For devices with width of 1400px and more, like desktop computers */
+@media only screen and (min-width: 1400px) {
+  #fixing-width {
+    width: 1296px;       
+  }
+} 
