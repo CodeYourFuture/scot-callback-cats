@@ -1,4 +1,3 @@
-import "./UploadFile.css";
 import CSVReader from "react-csv-reader";
 
 const convertHeader = (header) => {
