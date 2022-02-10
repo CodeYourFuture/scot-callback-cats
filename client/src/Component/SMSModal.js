@@ -1,27 +1,33 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 
-
+let defaultMessage = "Hi, this is BikesforRefugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
 
 function SMSModal(props) {
     const [show, setShow] = useState(false);
-    const hideModal = () => setShow(false);
-    const showModal = () => setShow(true);
 
-    let localMessage = localStorage.getItem("message");
-    if (localMessage === null) {
-      localMessage = "Hi, this is Bikes For Refugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
-    }
-    const [message, setMessage] = useState(localMessage);
+    const [message, setMessage] = useState(() => {
+      const localMessage = localStorage.getItem("message");
+      if (localMessage) {
+        return localMessage;
+      }
+      return defaultMessage;
+    });
+
+
+    useEffect(() => {
+      localStorage.setItem("message", message);
+    }, [message]);
 
     const handleChange = (e) => {
-      localStorage.setItem("message", e.target.value);
       setMessage(e.target.value);
     };
 
+    const hideModal = () => setShow(false);
+    const showModal = () => setShow(true);
 
     function handleSubmit () {
 
@@ -59,7 +65,7 @@ function SMSModal(props) {
           <Modal.Body>
             <form>
               <label className="form-text text-muted" htmlFor="text">Enter your message</label>
-              <textarea className="form-control border-radius" id='text' name='text' value={message} onChange={handleChange} />
+              <textarea className="form-control border-radius" id='text' name='text' value={defaultMessage} onChange={handleChange} />
             </form>
           </Modal.Body>
           <Modal.Footer>
