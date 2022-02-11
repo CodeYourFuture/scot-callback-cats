@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import MainTable from "../Component/MainTable";
 import SMSModal from "../Component/SMSModal";
 import "./Home.css";
+import UploadFile from "./UploadFile";
+
 
 export function Home() {
 	const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
@@ -20,7 +22,9 @@ export function Home() {
 
 
 	return (
+
 		<main role="main" className="container">
+			<UploadFile />
 			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} />
 			<SMSModal checkedCheckboxes={checkedCheckboxes} />
 		</main>
