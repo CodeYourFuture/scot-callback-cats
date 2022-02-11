@@ -8,7 +8,6 @@ const MainTable = (props) => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
-
 	useEffect(() => {
 		setIsLoading(true);
 		fetch("/api/clients")
@@ -75,14 +74,48 @@ const MainTable = (props) => {
 					{clientData.map((client) => {
 						return (
 							<tr key={client.client_id}>
-								<td><Checkbox isChecked={props.checkedCheckboxes.includes(client.client_id)} label={client.name} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
+								<td>
+									<Checkbox
+										isChecked={props.checkedCheckboxes.includes(
+											client.client_id
+										)}
+										label={client.name}
+										onChange={(checked) =>
+											props.onHandleSelectedUserState(checked, client.client_id)
+										}
+									/>
+								</td>
 								<td>{client.client_id}</td>
 								<td>{new Date(client.date_added).toLocaleString()}</td>
 								<td>{client.name}</td>
 								<td>{client.phone_number}</td>
 								<td>{client.bikes_needed}</td>
-								<td>{client.booking_status}</td>
-								<td>{client.residency_status}</td>
+								<td>
+									{client.booking_status == 1
+										? "Waiting"
+										: client.booking_status == 2
+										? "Contacted"
+										: client.booking_status == 3
+										? "Booked"
+										: client.booking_status == 4
+										? "Declined"
+										: client.booking_status == 5
+										? "Completed"
+										: client.booking_status == 6
+										? "Canceled"
+										: null}
+								</td>
+								<td>
+									{client.residency_status == 1
+										? "Asylum Seeker"
+										: client.booking_status == 2
+										? "Refugee"
+										: client.booking_status == 3
+										? "Unaccompanied minor"
+										: client.booking_status == 4
+										? "Destitute/Failed asylum"
+										: null}
+								</td>
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
 								<td>{client.language_spoken}</td>
@@ -104,5 +137,3 @@ const MainTable = (props) => {
 };
 
 export default MainTable;
-
-
