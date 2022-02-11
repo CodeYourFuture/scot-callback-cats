@@ -5,9 +5,9 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 const NavbarComponent = () => {
 	return (
-		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
 		<Container>
-		<Navbar.Brand as={Link} to="/">CYF | Bike for Refuges SMS</Navbar.Brand>
+		<Navbar.Brand as={Link} to="/">Bike for Refuges SMS APP</Navbar.Brand>
 		<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 		<Navbar.Collapse id="responsive-navbar-nav">
 		  <Nav className="me-auto">
