@@ -23,7 +23,7 @@ export function Home() {
 
 	return (
 
-		<main role="main" className="container">
+		<main role="main">
 			<UploadFile />
 			<MainTable checkedCheckboxes={checkedCheckboxes} onHandleSelectedUserState={onHandleSelectedUserState} />
 			<SMSModal checkedCheckboxes={checkedCheckboxes} />
