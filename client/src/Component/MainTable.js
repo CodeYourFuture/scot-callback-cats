@@ -43,8 +43,24 @@ const MainTable = (props) => {
 	if (error != null) {
 		return <Alert variant="danger">{error}</Alert>;
 	}
+
+	const bookingStatus = {
+		1: "Waiting",
+		2: "Contacted",
+		3: "Booked",
+		4: "Declined",
+		5: "Completed",
+		6: "Canceled",
+	};
+	const residencyStatus = {
+		1: "Asylum Seeker",
+		2: "Refugee",
+		3: "Unaccompanied minor",
+		4: "Destitute/Failed asylum",
+	};
+
 	return (
-		<div className="table-responsive-xxl">
+		<div className="table-responsive">
 			<table className="table align-middle  table-striped table-hover styled-table border">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
@@ -90,32 +106,8 @@ const MainTable = (props) => {
 								<td>{client.name}</td>
 								<td>{client.phone_number}</td>
 								<td>{client.bikes_needed}</td>
-								<td>
-									{client.booking_status == 1
-										? "Waiting"
-										: client.booking_status == 2
-										? "Contacted"
-										: client.booking_status == 3
-										? "Booked"
-										: client.booking_status == 4
-										? "Declined"
-										: client.booking_status == 5
-										? "Completed"
-										: client.booking_status == 6
-										? "Canceled"
-										: null}
-								</td>
-								<td>
-									{client.residency_status == 1
-										? "Asylum Seeker"
-										: client.booking_status == 2
-										? "Refugee"
-										: client.booking_status == 3
-										? "Unaccompanied minor"
-										: client.booking_status == 4
-										? "Destitute/Failed asylum"
-										: null}
-								</td>
+								<td>{bookingStatus[client.booking_status]}</td>
+								<td>{residencyStatus[client.residency_status]}</td>
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
 								<td>{client.language_spoken}</td>
