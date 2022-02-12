@@ -34,7 +34,7 @@ const MainTable = (props) => {
 
 	return (
 		<div className="table-responsive">
-			<table className="table align-middle table-hover table-striped styled-table border">
+			<table className="table align-middle table-hover table-striped styled-table border text-nowrap">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
@@ -56,7 +56,6 @@ const MainTable = (props) => {
 						<th scope="col">Postcode</th>
 						<th scope="col">Referring agency</th>
 						<th scope="col">Pick up date</th>
-						<th scope="col">Declined</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -71,7 +70,7 @@ const MainTable = (props) => {
 									/>
 								</td>
 								<td>{client.client_id}</td>
-								<td>{new Date(client.date_added).toLocaleString()}</td>
+								<td>{new Date(client.date_added).toLocaleDateString()}</td>
 								<td>{client.name}</td>
 								<td>{client.phone_number}</td>
 								<td>{client.bikes_needed}</td>
@@ -87,7 +86,6 @@ const MainTable = (props) => {
 								<td>{client.postcode}</td>
 								<td>{client.referring_agency}</td>
 								<td>{new Date(client.pick_up_date).toLocaleDateString()}</td>
-								<td>{client.is_declined}</td>
 							</tr>
 						);
 					})}

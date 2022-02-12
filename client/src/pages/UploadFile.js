@@ -50,7 +50,7 @@ const UploadFile = () => {
 
 	return (
 		<CSVReader
-			cssClass="pt-3"
+			cssClass="mt-3 me-1 d-inline-block"
 			cssInputClass="visually-hidden"
 			cssLabelClass="btn btn-primary"
 			label="Select CSV to import"
