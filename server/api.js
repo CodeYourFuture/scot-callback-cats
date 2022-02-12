@@ -1,5 +1,6 @@
 import { Router } from "express";
 import db from "./db";
+import { randomUUID } from "crypto";
 
 const router = new Router();
 
@@ -9,10 +10,11 @@ router.get("/", (req, res) => {
 
 router.get("/clients", (req, res) => {
 	db.query("SELECT * from clients;")
-		.then((result) => res.json(result.rows))
-		.catch((e) => {
-			res.status(400).send(e);
-		});
+    .then((result) => res.json(result.rows))
+	.catch((e) => {
+		console.error(e);
+		res.sendStatus(400);
+	});
 });
 
 const saveUser = (client) => {
@@ -109,6 +111,37 @@ router.post("/clients", (req, res) => {
 			.then(() => res.status(200).send("One client was inserted"))
 			.catch((e) => res.status(500).send(e));
 	}
+});
+
+router.post("/send-messages", (req, res) => {
+	const message = req.body.message;
+	const clientIds = req.body.ids;
+	const timeSent = new Date().toISOString();
+
+	const dbQueries = [];
+	clientIds.forEach((id)=>{
+		console.log("sending SMS to " + id);
+		const uuid = randomUUID();
+		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4)";
+		dbQueries.push(db.query(createQuery, [id, message, true, timeSent]));
+
+		const updateQuery = "UPDATE clients SET booking_status=2, uuid=$1 WHERE client_id=$2";
+		dbQueries.push(db.query(updateQuery, [uuid, id]));
+	});
+
+	Promise.allSettled(dbQueries)
+  		.then((results) => {
+			const rejectedQueries = results.filter((result) => result.status === "rejected");
+			if (rejectedQueries.length > 0) {
+				rejectedQueries.forEach((query) => {
+					console.error("database error sending sms:", query.reason);
+				});
+				res.status(400).send("error inserting into database");
+			} else {
+				res.sendStatus(201);
+			}
+		});
+
 });
 
 const updateUser = (client, clientId) => {
