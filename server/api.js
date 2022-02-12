@@ -17,21 +17,6 @@ router.get("/clients", (req, res) => {
 	});
 });
 
-router.post("/clients", (req, res) => {
-
-	const newClientDateAdded = req.body.date_added;
-	const newClientName = req.body.name;
-	const newClientBikes = req.body.bikes_needed;
-	const newClientPhoneNumber = req.body.phone_number;
-
-	const createQuery = "INSERT INTO clients (date_added, name, bikes_needed, phone_number) VALUES ($1, $2, $3, $4)";
-	db.query(createQuery, [newClientDateAdded, newClientName, newClientBikes, newClientPhoneNumber])
-	.then(() => res.json(req.body))
-	.catch((e) => {
-		console.error(e);
-		res.sendStatus(400);
-	});
-});
 const saveUser = (client) => {
 	const {
 		dateAdded,
@@ -112,6 +97,21 @@ const saveUser = (client) => {
 		isDeclined,
 	]);
 };
+
+router.post("/clients", (req, res) => {
+	if (Array.isArray(req.body)) {
+		const promises = req.body.map((client) => {
+			return saveUser(client);
+		});
+		Promise.all(promises)
+			.then(() => res.status(200).send("All clients were inserted"))
+			.catch((e) => res.status(500).send(e));
+	} else {
+		saveUser(req.body)
+			.then(() => res.status(200).send("One client was inserted"))
+			.catch((e) => res.status(500).send(e));
+	}
+});
 
 router.post("/send-messages", (req, res) => {
 	const message = req.body.message;
