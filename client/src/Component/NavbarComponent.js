@@ -7,7 +7,7 @@ const NavbarComponent = () => {
 	return (
 		<Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
 		<Container>
-		<Navbar.Brand as={Link} to="/">Bike for Refuges SMS APP</Navbar.Brand>
+		<Navbar.Brand as={Link} to="/">Bike for Refugees SMS</Navbar.Brand>
 		<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 		<Navbar.Collapse id="responsive-navbar-nav">
 		  <Nav className="me-auto">
