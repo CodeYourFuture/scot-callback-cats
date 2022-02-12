@@ -1,10 +1,9 @@
+import React, { useState, useEffect } from "react";
 import MainTable from "../Component/MainTable";
 import SMSModal from "../Component/SMSModal";
 import "./Home.css";
-import React, { useState, useEffect } from "react";
 import Alert from "react-bootstrap/Alert";
-
-
+import UploadFile from "./UploadFile";
 
 export function Home() {
 	const [selectedClients, setSelectedClients] = useState([]);
@@ -66,11 +65,13 @@ export function Home() {
 	};
 
 	return (
+
 		<main role="main">
 			{isSuccess &&
 				<Alert variant="success" onClose={() => setIsSuccess(false)} dismissible> Message sent!</Alert>}
 			{isFailure &&
 				<Alert variant="danger" onClose={() => setIsFailure(false)} dismissible> Something went wrong! </Alert>}
+			<UploadFile />
 			<SMSModal selectedClients={selectedClients} onSMSFailed={onSMSFailed} onSMSSent={onSMSSent} />
 			<MainTable selectedClients={selectedClients} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
 		</main>

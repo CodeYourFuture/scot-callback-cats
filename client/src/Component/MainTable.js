@@ -3,10 +3,22 @@ import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
 import Checkbox from "./Checkbox.js";
 
+const bookingStatus = {
+	1: "Waiting",
+	2: "Contacted",
+	3: "Booked",
+	4: "Declined",
+	5: "Completed",
+	6: "Canceled",
+};
+const residencyStatus = {
+	1: "Asylum Seeker",
+	2: "Refugee",
+	3: "Unaccompanied minor",
+	4: "Destitute/Failed asylum",
+};
+
 const MainTable = (props) => {
-
-
-
 	if (props.isLoading) {
 		return (
 			<div className="d-flex justify-content-center">
@@ -19,13 +31,14 @@ const MainTable = (props) => {
 	if (props.error != null) {
 		return <Alert variant="danger">{props.error}</Alert>;
 	}
+
 	return (
-		<div className="table-responsive-xxl">
-			<table className="table align-middle  table-striped table-hover styled-table border">
+		<div className="table-responsive">
+			<table className="table align-middle table-hover table-striped styled-table border">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
-						<th scope="col"></th>
+						<th scope="col">#</th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
@@ -50,14 +63,20 @@ const MainTable = (props) => {
 					{props.clientData.map((client) => {
 						return (
 							<tr key={client.client_id}>
-								<td><Checkbox isChecked={props.selectedClients.includes(client.client_id)} label={client.name} onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)} /></td>
+								<td>
+									<Checkbox
+										isChecked={props.selectedClients.includes(client.client_id)}
+										label={client.name}
+										onChange={(checked) => props.onHandleSelectedUserState(checked, client.client_id)}
+									/>
+								</td>
 								<td>{client.client_id}</td>
 								<td>{new Date(client.date_added).toLocaleString()}</td>
 								<td>{client.name}</td>
 								<td>{client.phone_number}</td>
 								<td>{client.bikes_needed}</td>
-								<td>{client.booking_status}</td>
-								<td>{client.residency_status}</td>
+								<td>{bookingStatus[client.booking_status]}</td>
+								<td>{residencyStatus[client.residency_status]}</td>
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
 								<td>{client.language_spoken}</td>
@@ -79,5 +98,3 @@ const MainTable = (props) => {
 };
 
 export default MainTable;
-
-

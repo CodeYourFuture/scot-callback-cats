@@ -75,15 +75,16 @@ const saveUser = (client) => {
 			"The field phoneNumber is empty. It is required to have a value"
 		);
 	}
-	if (isDeclined === undefined) {
-		validationErrors.push("The field isDeclined is empty");
-	}
+
 	if (validationErrors.length) {
 		return Promise.reject(validationErrors);
 	}
 
 	const dateAddedIso = new Date(dateAdded).toISOString();
-	const dateOfBirthIso = new Date(dateOfBirth).toISOString();
+	let dateOfBirthIso = null;
+	if (dateOfBirth){
+		dateOfBirthIso = new Date(dateOfBirth).toISOString();
+	}
 	const createQuery =
 		"INSERT INTO clients (date_added, name,  bikes_needed, phone_number, booking_status,residency_status, country_of_origin, time_in_scotland, language_spoken, english_speaker, english_skill_level, gender, date_of_birth, postcode, referring_agency, pick_up_date, is_declined)" +
 		" VALUES " +
