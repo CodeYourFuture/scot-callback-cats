@@ -61,10 +61,7 @@ const Calendar = () => {
 
 	return (
 		<div className="py-3">
-			<div className="p-4  bg-dark rounded-3 no-border">
-				{" "}
-				<h1 className="text-light bg-dark">Bike pick-up calendar</h1>
-			</div>
+			<h1 className="text-dark">Bike pick-up calendar</h1>
 			{pickUpDates.map((data) => {
 				return (
 					<React.Fragment key={data.date}>
