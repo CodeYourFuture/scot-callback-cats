@@ -61,7 +61,7 @@ const MainTable = (props) => {
 
 	return (
 		<div className="table-responsive">
-			<table className="table align-middle   table-hover table-striped styled-table border">
+			<table className="table align-middle table-hover table-striped styled-table border">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
