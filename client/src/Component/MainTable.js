@@ -3,6 +3,21 @@ import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
 import Checkbox from "./Checkbox.js";
 
+const bookingStatus = {
+	1: "Waiting",
+	2: "Contacted",
+	3: "Booked",
+	4: "Declined",
+	5: "Completed",
+	6: "Canceled",
+};
+const residencyStatus = {
+	1: "Asylum Seeker",
+	2: "Refugee",
+	3: "Unaccompanied minor",
+	4: "Destitute/Failed asylum",
+};
+
 const MainTable = (props) => {
 	const [clientData, setClientData] = useState([]);
 	const [error, setError] = useState(null);
@@ -43,21 +58,6 @@ const MainTable = (props) => {
 	if (error != null) {
 		return <Alert variant="danger">{error}</Alert>;
 	}
-
-	const bookingStatus = {
-		1: "Waiting",
-		2: "Contacted",
-		3: "Booked",
-		4: "Declined",
-		5: "Completed",
-		6: "Canceled",
-	};
-	const residencyStatus = {
-		1: "Asylum Seeker",
-		2: "Refugee",
-		3: "Unaccompanied minor",
-		4: "Destitute/Failed asylum",
-	};
 
 	return (
 		<div className="table-responsive">
