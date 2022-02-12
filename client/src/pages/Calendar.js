@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Alert from "react-bootstrap/Alert";
 import "./Calendar.css";
 
+const isSameDate = (dateA, dateB) => {
+	return 	new Date(dateA).toDateString() === new Date(dateB).toDateString();
+};
+
 const Calendar = () => {
 	const [bookingsData, setBookingsData] = useState([]);
 	const [error, setError] = useState(null);
@@ -44,10 +48,6 @@ const Calendar = () => {
 // Each element has the structure { date: Date, clients: [] }
 	const pickUpDates = [];
 
-const isSameDate = (dateA, dateB) => {
-	return 	new Date(dateA).toDateString() === new Date(dateB).toDateString();
-};
-
 	bookingsData.forEach((client) => {
 		const existingPickUpDate = pickUpDates.find((el) => isSameDate(el.date, client.pick_up_date));
 		if (existingPickUpDate) {
@@ -76,7 +76,7 @@ const isSameDate = (dateA, dateB) => {
 							})}
 						</h2>
 						<div className="table-responsive-xxl ">
-							<table id="fixing-width" className="table align-middle table-striped table-hover caption-top">
+							<table className="table calendar-table align-middle table-striped table-hover caption-top">
 								<caption className="visually-hidden">Clients</caption>
 								<thead className="table-dark">
 									<tr>
