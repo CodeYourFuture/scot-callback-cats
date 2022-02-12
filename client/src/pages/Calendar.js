@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Alert from "react-bootstrap/Alert";
 import "./Calendar.css";
 
+const isSameDate = (dateA, dateB) => {
+	return 	new Date(dateA).toDateString() === new Date(dateB).toDateString();
+};
+
 const Calendar = () => {
 	const [bookingsData, setBookingsData] = useState([]);
 	const [error, setError] = useState(null);
@@ -45,10 +49,10 @@ const Calendar = () => {
 	const pickUpDates = [];
 
 	bookingsData.forEach((client) => {
-		let found = pickUpDates.find((element) => element.date == client.pick_up_date);
-		if (found) {
-			found.clients.push(client);
-			found.clients.sort((a, b) => new Date(a.pick_up_date) - new Date(b.pick_up_date));
+		const existingPickUpDate = pickUpDates.find((el) => isSameDate(el.date, client.pick_up_date));
+		if (existingPickUpDate) {
+			existingPickUpDate.clients.push(client);
+			existingPickUpDate.clients.sort((a, b) => new Date(a.pick_up_date) - new Date(b.pick_up_date));
 		} else {
 			pickUpDates.push({ date: client.pick_up_date, clients: [client] });
 		}
@@ -71,7 +75,7 @@ const Calendar = () => {
 							})}
 						</h2>
 						<div className="table-responsive-xxl ">
-							<table id="fixing-width" className="table align-middle table-striped table-hover caption-top">
+							<table className="table calendar-table align-middle table-striped table-hover caption-top">
 								<caption className="visually-hidden">Clients</caption>
 								<thead className="table-dark">
 									<tr>
@@ -85,7 +89,7 @@ const Calendar = () => {
 										return (
 											<tr key={client.client_id}>
 												<td>
-													{new Date(data.date).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true })}
+													{new Date(client.pick_up_date).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true })}
 													</td>
 												<td>{client.name}</td>
 												<td>{client.bikes_needed}</td>
