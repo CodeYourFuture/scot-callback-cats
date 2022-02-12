@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 
-let defaultMessage = "Hi, this is BikesforRefugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
+const defaultMessage = "Hi, this is BikesforRefugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
 
 function SMSModal(props) {
     const [show, setShow] = useState(false);
@@ -33,7 +33,7 @@ function SMSModal(props) {
 
       const newMessageRequest = {
           ids : props.selectedClients,
-          message: message,
+          message,
         };
 
       fetch ("/api/send-messages", {
@@ -44,12 +44,21 @@ function SMSModal(props) {
           body: JSON.stringify(newMessageRequest),
         })
         .then((response) => {
+          if (!response.ok) {
+            throw new Error();
+          }
+        })
+        .then(() => {
+            props.onSMSSent();
+          })
+        .catch(() => {
+            props.onSMSFailed();
+          })
+        .finally(() => {
           hideModal();
-          props.onSMSSent();
-          return response.json();
         });
-      console.log(newMessageRequest);
-  }
+    }
+
 
 
     return (
@@ -65,7 +74,7 @@ function SMSModal(props) {
           <Modal.Body>
             <form>
               <label className="form-text text-muted" htmlFor="text">Enter your message</label>
-              <textarea className="form-control border-radius" id='text' name='text' value={defaultMessage} onChange={handleChange} />
+              <textarea className="form-control border-radius" id='text' name='text' value={message} onChange={handleChange} />
             </form>
           </Modal.Body>
           <Modal.Footer>

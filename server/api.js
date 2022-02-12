@@ -130,11 +130,14 @@ router.post("/send-messages", (req, res) => {
 
 	Promise.allSettled(dbQueries)
   		.then((results) => {
-			let filteredResults = results.filter((result) => result.status === "rejected");
-			if (filteredResults.length > 0) {
+			const rejectedQueries = results.filter((result) => result.status === "rejected");
+			if (rejectedQueries.length > 0) {
+				rejectedQueries.forEach((query) => {
+					console.error("database error sending sms:", query.reason);
+				});
 				res.status(400).send("error inserting into database");
 			} else {
-				res.status(201).send({ status: "Okay" });
+				res.sendStatus(201);
 			}
 		});
 
