@@ -61,11 +61,11 @@ const MainTable = (props) => {
 
 	return (
 		<div className="table-responsive">
-			<table className="table align-middle  table-striped table-hover styled-table border">
+			<table className="table align-middle   table-hover table-striped styled-table border">
 				<caption className="visually-hidden">Clients</caption>
 				<thead className="table-dark">
 					<tr>
-						<th scope="col"></th>
+						<th scope="col">#</th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
