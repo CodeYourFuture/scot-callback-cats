@@ -32,6 +32,16 @@ const MainTable = (props) => {
 		return <Alert variant="danger">{props.error}</Alert>;
 	}
 
+	const speakEnglish = (value) => {
+		if (value === true) {
+			return	"Yes";
+		}else if (value === false){
+			return "No";
+		}else{
+			return "";
+		}
+	};
+
 	return (
 		<div className="table-responsive">
 			<table className="table align-middle table-hover table-striped styled-table border text-nowrap">
@@ -79,7 +89,7 @@ const MainTable = (props) => {
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
 								<td>{client.language_spoken}</td>
-								<td>{client.english_speaker}</td>
+								<td>{speakEnglish(client.english_speaker)}</td>
 								<td>{client.english_skill_level}</td>
 								<td>{client.gender}</td>
 								<td>{new Date(client.date_of_birth).toLocaleDateString()}</td>
