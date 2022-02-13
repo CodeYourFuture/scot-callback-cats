@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import camelCase from "lodash/camelCase";
 
 const times = [
 	{ text: "10:30", value: "10:30" },
@@ -14,6 +15,14 @@ const times = [
 	{ text: "13:00", value: "13:00" },
 	{ text: "13:30", value: "13:30" },
 ];
+
+const convertPropertiesToCamelCase = (client) => {
+	const clientCamelCased = {};
+	Object.keys(client).forEach((key) => {
+		clientCamelCased[camelCase(key)] = client[key];
+	});
+	return clientCamelCased;
+};
 
 function BookingPage() {
 	const [clientData, setClientData] = useState([]);
@@ -48,7 +57,20 @@ function BookingPage() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(date, time);
+		const payload = convertPropertiesToCamelCase(clientData);
+		const dateTime = `${date}T${time}:00.000Z`;
+		payload.pickUpDate = dateTime;
+		payload.bookingStatus = 3;
+
+		fetch(`/api/clients/${clientData.client_id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(payload),
+		}).then(() => {
+			// location.reload();
+		});
 	};
 
 	const handleDateChange = (event) => {
