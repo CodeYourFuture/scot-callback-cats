@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import camelCase from "lodash/camelCase";
+import Alert from "react-bootstrap/Alert";
 
 const times = [
 	{ text: "10:30", value: "10:30" },
@@ -80,6 +81,19 @@ function BookingPage() {
 	const handleTimeChange = (event) => {
 		setTime(event.target.value);
 	};
+
+	if (isLoading) {
+		return (
+			<div className="d-flex justify-content-center">
+				<div className="spinner-grow">
+					<span className="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		);
+	}
+	if (error != null) {
+		return <Alert variant="danger">{error}</Alert>;
+	}
 
 	return (
 		<div>
