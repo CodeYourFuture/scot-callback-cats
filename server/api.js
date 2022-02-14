@@ -129,8 +129,9 @@ router.post("/send-messages", (req, res) => {
 	clientIds.forEach((id)=>{
 		console.log("sending SMS to " + id);
 		const uuid = randomUUID();
-		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent) VALUES ($1, $2, $3, $4)";
-		dbQueries.push(db.query(createQuery, [id, message, true, timeSent]));
+		const url = `http://localhost:3000/book/${uuid}`;
+		const createQuery = "INSERT INTO messages (client_id, message, successfully_sent, time_sent, url) VALUES ($1, $2, $3, $4, $5)";
+		dbQueries.push(db.query(createQuery, [id, message, true, timeSent, url]));
 
 		const updateQuery = "UPDATE clients SET booking_status=2, uuid=$1 WHERE client_id=$2";
 		dbQueries.push(db.query(updateQuery, [uuid, id]));
