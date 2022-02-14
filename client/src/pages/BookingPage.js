@@ -31,6 +31,7 @@ function BookingPage() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
+	const [isSuccess, setIsSuccess] = useState(false);
 
 	const urlParams = useParams();
 
@@ -70,6 +71,7 @@ function BookingPage() {
 			},
 			body: JSON.stringify(payload),
 		}).then(() => {
+			setIsSuccess(true);
 			// location.reload();
 		});
 	};
@@ -97,6 +99,16 @@ function BookingPage() {
 
 	return (
 		<div>
+			{isSuccess && (
+				<Alert
+					variant="success"
+					onClose={() => setIsSuccess(false)}
+					dismissible
+				>
+					{" "}
+					booked made!
+				</Alert>
+			)}
 			<h1 className="my-3">Book a time to pick up bikes</h1>
 			<h3>{clientData.name}</h3>
 			<h3>{clientData.phone_number}</h3>
