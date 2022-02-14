@@ -106,7 +106,7 @@ function BookingPage() {
 					dismissible
 				>
 					{" "}
-					booked made!
+					Your booking has been made! You will receive a reminder closer to your chosen collection date.
 				</Alert>
 			)}
 			<h1 className="my-3">Book a time to pick up bikes</h1>
@@ -140,7 +140,6 @@ function BookingPage() {
 				<Button type="submit" variant="primary" className="me-1">
 					Confirm time
 				</Button>
-				<Button variant="outline-danger">Decline bikes</Button>
 			</Form>
 		</div>
 	);
