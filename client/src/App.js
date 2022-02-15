@@ -18,7 +18,7 @@ const App = () => {
 				<NavbarComponent />
 			)}
 
-			<Container>
+			<Container className="py-3">
 				<Switch>
 					<Route path="/" exact>
 						<Home />
