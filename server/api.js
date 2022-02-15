@@ -24,6 +24,15 @@ router.get("/clients", (req, res) => {
 	}
 });
 
+router.get("/messages", (req, res) => {
+		db.query("SELECT clients.name, messages.message, messages.time_sent, messages.url FROM messages INNER JOIN clients ON (messages.client_id = clients.client_id);")
+		.then((result) => res.json(result.rows))
+		.catch((e) => {
+			console.error(e);
+			res.sendStatus(400);
+		});
+	});
+
 const saveUser = (client) => {
 	const {
 		dateAdded,
