@@ -33,7 +33,7 @@ function Messages () {
         <>
         <h3 className="py-3">Messages</h3>
         <div className="table-responsive">
-			<table className="table align-middle table-hover table-striped styled-table border text-nowrap">
+			<table className="table align-middle table-hover table-striped styled-table border">
 				<caption className="visually-hidden">Messages table</caption>
 				<thead className="table-dark">
 					<tr>
