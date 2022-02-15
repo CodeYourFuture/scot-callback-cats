@@ -32,6 +32,14 @@ const MainTable = (props) => {
 		return <Alert variant="danger">{props.error}</Alert>;
 	}
 
+	const validDate = (value) => {
+		if (value === null) {
+			return	"";
+		}else {
+			return new Date(value).toLocaleDateString();
+		}
+	};
+
 	return (
 		<div className="table-responsive">
 			<table className="table align-middle table-hover table-striped styled-table border text-nowrap">
@@ -82,10 +90,10 @@ const MainTable = (props) => {
 								<td>{client.english_speaker}</td>
 								<td>{client.english_skill_level}</td>
 								<td>{client.gender}</td>
-								<td>{new Date(client.date_of_birth).toLocaleDateString()}</td>
+								<td>{validDate(client.date_of_birth)}</td>
 								<td>{client.postcode}</td>
 								<td>{client.referring_agency}</td>
-								<td>{new Date(client.pick_up_date).toLocaleDateString()}</td>
+								<td>{validDate(client.pick_up_date)}</td>
 							</tr>
 						);
 					})}
