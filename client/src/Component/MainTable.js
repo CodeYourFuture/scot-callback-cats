@@ -53,6 +53,7 @@ const MainTable = (props) => {
 						<th scope="col">Phone</th>
 						<th scope="col">Bikes needed</th>
 						<th scope="col">Booking status</th>
+						<th scope="col">Pick up date</th>
 						<th scope="col">Residency status</th>
 						<th scope="col">Country of origin</th>
 						<th scope="col">Time in Scotland</th>
@@ -63,7 +64,6 @@ const MainTable = (props) => {
 						<th scope="col">DOB</th>
 						<th scope="col">Postcode</th>
 						<th scope="col">Referring agency</th>
-						<th scope="col">Pick up date</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -83,6 +83,7 @@ const MainTable = (props) => {
 								<td>{client.phone_number}</td>
 								<td>{client.bikes_needed}</td>
 								<td>{bookingStatus[client.booking_status]}</td>
+								<td>{validDate(client.pick_up_date)}</td>
 								<td>{residencyStatus[client.residency_status]}</td>
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
@@ -93,7 +94,6 @@ const MainTable = (props) => {
 								<td>{validDate(client.date_of_birth)}</td>
 								<td>{client.postcode}</td>
 								<td>{client.referring_agency}</td>
-								<td>{validDate(client.pick_up_date)}</td>
 							</tr>
 						);
 					})}
