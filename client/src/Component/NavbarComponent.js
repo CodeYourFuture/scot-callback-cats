@@ -4,6 +4,8 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 
 const NavbarComponent = () => {
+
+
 	return (
 		<Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
 		<Container>
