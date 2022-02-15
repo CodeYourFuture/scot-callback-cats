@@ -1,6 +1,6 @@
-Submitted On,How many bikes are you requesting,Name,Country of Origin,Language,Do you speak English,how well do you speak English,How long have you been in Scotland for,Phone number
-17 Feb 2022 14:25:08 GMT,4,Burhan K,Afghanistan,Pashtun,Yes,"I am learning but my wife does not",6 weeks,+447900000001
-18 Feb 2022 14:30:47 GMT,4,Behroz,Afghanistan,Dari,No,no English,3 weeks,+447900000002
-18 Feb 2022 14:51:33 GMT,1,Rania A,Syria,Arabic,Yes,a little,one month,+447900000003
-19 Feb 2022 11:27:57 GMT,1,Afran,Iran,Kurdish Sorani,Yes,Learning,8 weeks,+447900000004
-20 Feb 2022 16:01:33 GMT,2,Hussein,Syria,Arabic,No,Very little,Since 22/09/2021,+447900000005
+Submitted On,How many bikes are you requesting,Booking status,Name,Country of Origin,Language,Do you speak English,how well do you speak English,How long have you been in Scotland for,Phone number
+17 Feb 2022 14:25:08 GMT,4,1,Burhan K,Afghanistan,Pashtun,Yes,"I am learning but my wife does not",6 weeks,+447900000001
+18 Feb 2022 14:30:47 GMT,4,1,Behroz,Afghanistan,Dari,No,no English,3 weeks,+447900000002
+18 Feb 2022 14:51:33 GMT,1,1,Rania A,Syria,Arabic,Yes,a little,one month,+447900000003
+19 Feb 2022 11:27:57 GMT,1,1,Afran,Iran,Kurdish Sorani,Yes,Learning,8 weeks,+447900000004
+20 Feb 2022 16:01:33 GMT,2,1,Hussein,Syria,Arabic,No,Very little,Since 22/09/2021,+447900000005
