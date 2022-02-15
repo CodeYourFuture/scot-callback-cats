@@ -38,7 +38,7 @@ function Messages () {
 				<thead className="table-dark">
 					<tr>
 						<th scope="col">Name</th>
-						<th scope="col" className="text-truncate">Message</th>
+						<th scope="col">Message</th>
 						<th scope="col">Sent on</th>
 						<th scope="col">URL</th>
                     </tr>
