@@ -31,7 +31,7 @@ function Messages () {
 
     return (
         <>
-        <h3 className="py-3">Messages</h3>
+        <h1 className="py-3">Messages</h1>
         <div className="table-responsive">
 			<table className="table align-middle table-hover table-striped styled-table border">
 				<caption className="visually-hidden">Messages table</caption>
@@ -50,7 +50,7 @@ function Messages () {
                                 <td>{message.name}</td>
                                 <td>{message.message}</td>
                                 <td>{new Date(message.time_sent).toLocaleDateString()}</td>
-                                <td><a href={message.url} className="link-primary">View {message.name}&#39;s booking</a></td>
+                                <td><a href={message.url} className="link-primary">{message.url}</a></td>
                             </tr>
                             );
                         })
