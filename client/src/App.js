@@ -5,8 +5,7 @@ import Calendar from "./pages/Calendar";
 import BookingPage from "./pages/BookingPage";
 import NavbarComponent from "./Component/NavbarComponent";
 import { Container } from "react-bootstrap";
-
-
+import Messages from "./pages/Messages";
 
 const App = () => {
 	const location = useLocation();
@@ -37,5 +36,6 @@ console.log(location);
 		</>
 	);
 };
+
 
 export default App;
