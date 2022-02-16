@@ -36,8 +36,9 @@ const MainTable = (props) => {
 		if (value === null) {
 			return	"";
 		}else {
-			return new Date(value).toLocaleDateString(); 
+			return new Date(value).toLocaleDateString();
     }
+};
 
 	const speakEnglish = (value) => {
 		if (value === true) {
@@ -46,8 +47,9 @@ const MainTable = (props) => {
 			return "No";
 		}else{
 			return "";
-		};
-	
+	}
+};
+
 
 	return (
 		<div className="table-responsive">

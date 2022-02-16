@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 
-const defaultMessage = "Hi, this is BikesforRefugees. Bikes are now available for you to pick up. Please click LINK to choose a pick up date. For any questions, please contact 07900000000.";
+const defaultMessage = "Hi, this is BikesforRefugees. Bikes are now available for you to pick up. Please click the following link to choose a pick up date. For any questions, please contact 0141 9496 0077";
 
 function SMSModal(props) {
     const [show, setShow] = useState(false);
