@@ -59,9 +59,26 @@ const Calendar = () => {
 	});
 	pickUpDates.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+	const now = new Date().toLocaleString("en-GB", {
+		weekday: "long",
+		month: "long",
+		day: "numeric",
+		});
+
+
+	const today = new Date();
+	const twoWeeksFromNow = today.setDate(today.getDate() + 14);
+
+
+
 	return (
 		<div className="py-3">
 			<h1 className="text-dark">Bike pick-up calendar</h1>
+			<p>Showing appointments between {now} and {new Date(twoWeeksFromNow).toLocaleString("en-GB", {
+		weekday: "long",
+		month: "long",
+		day: "numeric",
+		})} </p>
 			{pickUpDates.map((data) => {
 				return (
 					<React.Fragment key={data.date}>
@@ -79,7 +96,8 @@ const Calendar = () => {
 									<tr>
 										<th scope="col">Time</th>
 										<th scope="col">Name</th>
-										<th scope="col">Amount of Bikes</th>
+										<th scope="col">Bikes requested</th>
+										<th scope="col">Phone number</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -91,6 +109,7 @@ const Calendar = () => {
 													</td>
 												<td>{client.name}</td>
 												<td>{client.bikes_needed}</td>
+												<td>{client.phone_number}</td>
 											</tr>
 										);
 									})}
