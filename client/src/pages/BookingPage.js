@@ -6,6 +6,9 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import camelCase from "lodash/camelCase";
 import Alert from "react-bootstrap/Alert";
+import  Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import "./BookingPage.css";
 
 const times = [
 	{ text: "10:30", value: "10:30" },
@@ -98,6 +101,12 @@ function BookingPage() {
 	}
 
 	return (
+		<>
+		<Navbar className="full-width" sticky="top" expand="sm" bg="dark" variant="dark">
+			<Container>
+				<Navbar.Brand href="https://www.bikesforrefugees.scot/">Bikes for Refugees</Navbar.Brand>
+			</Container>
+		</Navbar>
 		<div>
 			{isSuccess && (
 				<Alert
@@ -109,10 +118,10 @@ function BookingPage() {
 					Your booking has been made! You will receive a reminder closer to your chosen collection date.
 				</Alert>
 			)}
-			<h1 className="my-3">Book a time to pick up bikes</h1>
-			<h3>{clientData.name}</h3>
-			<h3>{clientData.phone_number}</h3>
-			<h3>bikes needed: {clientData.bikes_needed}</h3>
+			<h1 className="mt-3 mb-4">Book a time to pick up bikes</h1>
+			<h2 className="my-2">{clientData.name}</h2>
+			<p className="mb-0">Phone number: {clientData.phone_number}</p>
+			<p className="pt-0">Bikes requested: {clientData.bikes_needed}</p>
 			<Form onSubmit={handleSubmit}>
 				<Row>
 					<Col>
@@ -142,6 +151,7 @@ function BookingPage() {
 				</Button>
 			</Form>
 		</div>
+		</>
 	);
 }
 
