@@ -4,6 +4,7 @@ const convertHeader = (header) => {
 	const conversionObject = {
 		"Submitted On": "dateAdded",
 		"How many bikes are you requesting": "bikesNeeded",
+		"Booking status": "bookingStatus",
 		Name: "name",
 		"Country of Origin": "countryOfOrigin",
 		Language: "languageSpoken",
