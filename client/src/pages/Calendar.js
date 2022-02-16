@@ -6,6 +6,16 @@ const isSameDate = (dateA, dateB) => {
 	return 	new Date(dateA).toDateString() === new Date(dateB).toDateString();
 };
 
+const getTwoWeeks = () => {
+	const today = new Date();
+	const twoWeeksFromNow = today.setDate(today.getDate() + 14);
+	return new Date(twoWeeksFromNow).toLocaleString("en-GB", {
+		weekday: "long",
+		month: "long",
+		day: "numeric",
+		});
+};
+
 const Calendar = () => {
 	const [bookingsData, setBookingsData] = useState([]);
 	const [error, setError] = useState(null);
@@ -59,26 +69,11 @@ const Calendar = () => {
 	});
 	pickUpDates.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-	const now = new Date().toLocaleString("en-GB", {
-		weekday: "long",
-		month: "long",
-		day: "numeric",
-		});
-
-
-	const today = new Date();
-	const twoWeeksFromNow = today.setDate(today.getDate() + 14);
-
-
 
 	return (
 		<div className="py-3">
 			<h1 className="text-dark">Bike pick-up calendar</h1>
-			<p>Showing appointments between {now} and {new Date(twoWeeksFromNow).toLocaleString("en-GB", {
-		weekday: "long",
-		month: "long",
-		day: "numeric",
-		})} </p>
+			<p>Showing appointments between today and {getTwoWeeks()} </p>
 			{pickUpDates.map((data) => {
 				return (
 					<React.Fragment key={data.date}>
