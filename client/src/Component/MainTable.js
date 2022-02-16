@@ -26,19 +26,28 @@ const MainTable = (props) => {
 					<span className="visually-hidden">Loading...</span>
 				</div>
 			</div>
-		);
-	}
+		  );
+	  }
 	if (props.error != null) {
 		return <Alert variant="danger">{props.error}</Alert>;
-	}
+	  }
 
 	const validDate = (value) => {
 		if (value === null) {
 			return	"";
 		}else {
-			return new Date(value).toLocaleDateString();
-		}
-	};
+			return new Date(value).toLocaleDateString(); 
+    }
+
+	const speakEnglish = (value) => {
+		if (value === true) {
+			return	"Yes";
+		}else if (value === false){
+			return "No";
+		}else{
+			return "";
+		};
+	
 
 	return (
 		<div className="table-responsive">
@@ -88,7 +97,7 @@ const MainTable = (props) => {
 								<td>{client.country_of_origin}</td>
 								<td>{client.time_in_scotland}</td>
 								<td>{client.language_spoken}</td>
-								<td>{client.english_speaker}</td>
+								<td>{speakEnglish(client.english_speaker)}</td>
 								<td>{client.english_skill_level}</td>
 								<td>{client.gender}</td>
 								<td>{validDate(client.date_of_birth)}</td>

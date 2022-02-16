@@ -12,7 +12,8 @@ export function Home() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailure, setIsFailure] = useState(false);
-
+	const [isUploadSuccess, setIsUploadSuccess] = useState(false);
+	const [isUploadFailure, setIsUploadFailure] = useState(false);
 
 	const loadClientData = () => {
 		setIsLoading(true);
@@ -64,6 +65,16 @@ export function Home() {
 		setIsFailure(true);
 	};
 
+	const onCsvFileSent = () =>  {
+		loadClientData();
+		setIsUploadSuccess(true);
+	};
+
+	const onCsvFileFailed = () => {
+		loadClientData();
+		setIsUploadFailure(true);
+	};
+
 	return (
 
 		<main role="main">
@@ -71,7 +82,11 @@ export function Home() {
 				<Alert variant="success" onClose={() => setIsSuccess(false)} dismissible> Message sent!</Alert>}
 			{isFailure &&
 				<Alert variant="danger" onClose={() => setIsFailure(false)} dismissible> Something went wrong! </Alert>}
-			<UploadFile />
+			{isUploadSuccess &&
+				<Alert variant="success" onClose={() => setIsUploadSuccess(false)} dismissible> CSV file uploaded!</Alert>}
+			{isUploadFailure &&
+				<Alert variant="danger" onClose={() => setIsUploadFailure(false)} dismissible> Something went wrong during the upload! Please retry.</Alert>}
+			<UploadFile onCsvFileSent={onCsvFileSent} onCsvFileFailed={onCsvFileFailed} />
 			<SMSModal selectedClients={selectedClients} onSMSFailed={onSMSFailed} onSMSSent={onSMSSent} />
 			<MainTable selectedClients={selectedClients} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
 		</main>

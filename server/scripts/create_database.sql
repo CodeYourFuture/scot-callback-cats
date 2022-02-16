@@ -37,7 +37,8 @@ CREATE TABLE messages
     client_id INT,
 	message VARCHAR,
 	successfully_sent BOOLEAN,
-    time_sent TIMESTAMP
+    time_sent TIMESTAMP,
+    url VARCHAR
 );
 
 CREATE TABLE booking_status 

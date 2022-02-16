@@ -22,7 +22,7 @@ const convertHeader = (header) => {
 	return convertedHeaders;
 };
 
-const UploadFile = () => {
+const UploadFile = (props) => {
 	const selectFile = (data) => {
 		const header = data.splice(0, 1)[0];
 		const convertedHeaders = convertHeader(header);
@@ -45,8 +45,11 @@ const UploadFile = () => {
 			},
 			body: JSON.stringify(clients),
 		}).then(() => {
-			location.reload();
-		});
+			props.onCsvFileSent();
+		})
+		.catch(() => {
+            props.onCsvFileFailed();
+          });
 	};
 
 	return (
