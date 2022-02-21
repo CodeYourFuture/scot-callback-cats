@@ -1,6 +1,7 @@
 import React from "react";
 import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
+import Pagination from "react-bootstrap/Pagination";
 import Checkbox from "./Checkbox.js";
 
 const bookingStatus = {
@@ -16,6 +17,13 @@ const residencyStatus = {
 	2: "Refugee",
 	3: "Unaccompanied minor",
 	4: "Destitute/Failed asylum",
+};
+
+const bookingStatusStyle = {
+	1: "badge rounded-pill bg-secondary",
+	2: "badge rounded-pill bg-warning text-dark",
+	3: "badge rounded-pill bg-success",
+	4: "badge rounded-pill bg-danger",
 };
 
 const MainTable = (props) => {
@@ -52,10 +60,10 @@ const MainTable = (props) => {
 
 
 	return (
-		<div className="table-responsive">
-			<table className="table align-middle table-hover table-striped styled-table border text-nowrap">
+		<div className="table-responsive pt-3">
+			<table className="table align-middle table-hover text-nowrap">
 				<caption className="visually-hidden">Clients</caption>
-				<thead className="table-dark">
+				<thead className="table-secondary">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Id</th>
@@ -92,8 +100,8 @@ const MainTable = (props) => {
 								<td>{new Date(client.date_added).toLocaleDateString()}</td>
 								<td>{client.name}</td>
 								<td>{client.phone_number}</td>
-								<td>{client.bikes_needed}</td>
-								<td>{bookingStatus[client.booking_status]}</td>
+								<td className="align-bikes-needed">{client.bikes_needed}</td>
+								<td><span className={bookingStatusStyle[client.booking_status]}>{bookingStatus[client.booking_status]}</span></td>
 								<td>{validDate(client.pick_up_date)}</td>
 								<td>{residencyStatus[client.residency_status]}</td>
 								<td>{client.country_of_origin}</td>

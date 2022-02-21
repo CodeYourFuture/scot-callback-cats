@@ -84,10 +84,10 @@ const Calendar = () => {
 								day: "numeric",
 							})}
 						</h2>
-						<div className="table-responsive-xxl ">
-							<table className="table calendar-table align-middle table-striped table-hover caption-top">
+						<div className="table-responsive ">
+							<table className="table calendar-table align-middle  table-hover caption-top table align-middle table-hover  rounded-3 text-nowrap">
 								<caption className="visually-hidden">Clients</caption>
-								<thead className="table-dark">
+								<thead className="table-secondary">
 									<tr>
 										<th scope="col">Time</th>
 										<th scope="col">Name</th>

@@ -63,7 +63,7 @@ function SMSModal(props) {
 
     return (
       <>
-        <Button variant="primary" onClick={showModal} disabled={props.selectedClients.length === 0}>
+        <Button variant="secondary" onClick={showModal} disabled={props.selectedClients.length === 0}>
           Send SMS
         </Button>
 

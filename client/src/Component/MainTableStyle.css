@@ -1,8 +1,3 @@
-.styled-table {
-    margin: 1rem 0;
-    font-size: 0.9em;
-}
-
-.styled-table tbody tr:last-of-type{
-    border-bottom: 3px solid #000000;  
+.align-bikes-needed {
+    text-align: center;
 }
