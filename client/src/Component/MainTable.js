@@ -98,10 +98,10 @@ const MainTable = (props) => {
 								</td>
 								<td>{client.client_id}</td>
 								<td>{new Date(client.date_added).toLocaleDateString()}</td>
-								<td>{client.name}</td>
+								<td className="fw-bold">{client.name}</td>
 								<td>{client.phone_number}</td>
 								<td className="align-bikes-needed">{client.bikes_needed}</td>
-								<td><span className={bookingStatusStyle[client.booking_status]}>{bookingStatus[client.booking_status]}</span></td>
+								<td className="fs-5"><span className={bookingStatusStyle[client.booking_status]}>{bookingStatus[client.booking_status]}</span></td>
 								<td>{validDate(client.pick_up_date)}</td>
 								<td>{residencyStatus[client.residency_status]}</td>
 								<td>{client.country_of_origin}</td>

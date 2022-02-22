@@ -48,7 +48,7 @@ function Messages () {
 					{messageData.map((message)=> {
                         return (
                             <tr key={message.url}>
-                                <td>{message.name}</td>
+                                <td className="fw-bold">{message.name}</td>
                                 <td>{message.message}</td>
                                 <td>{new Date(message.time_sent).toLocaleDateString()}</td>
                                 <td><a href={message.url} className="link-secondary link-on-hover">{message.url}</a></td>

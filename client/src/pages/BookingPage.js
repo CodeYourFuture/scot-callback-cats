@@ -122,7 +122,7 @@ function BookingPage() {
 			<h2 className="my-2">{clientData.name}</h2>
 			<p className="mb-0">Phone number: {clientData.phone_number}</p>
 			<p className="pt-0">Bikes requested: {clientData.bikes_needed}</p>
-			<Form onSubmit={handleSubmit}>
+			<Form onSubmit={handleSubmit} variant="success">
 				<Row>
 					<Col>
 						<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -146,7 +146,7 @@ function BookingPage() {
 					</Col>
 				</Row>
 
-				<Button type="submit" variant="primary" className="me-1">
+				<Button type="submit" variant="dark" className="me-1 btn-on-hover fw-bold">
 					Confirm time
 				</Button>
 			</Form>

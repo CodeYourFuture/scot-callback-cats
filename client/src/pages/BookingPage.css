@@ -7,3 +7,9 @@
     margin-right: -50vw;
     margin-top: -1rem;
   }
+
+  .btn-on-hover:hover {
+    color: black;
+    background-color: rgb(255,193,7);
+    border-color: black;
+}

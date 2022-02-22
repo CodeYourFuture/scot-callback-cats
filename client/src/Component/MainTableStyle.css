@@ -1,3 +1,23 @@
 .align-bikes-needed {
     text-align: center;
 }
+
+.btn-on-hover:hover {
+    color: black;
+    background-color: rgb(255,193,7);
+    border-color: black;
+}
+
+.btn-on-send-hover:hover {
+    color: white;
+    background-color: #198754;
+    border-color: black;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+}
+
+.form-check-input:checked{
+    background-color: black;
+}

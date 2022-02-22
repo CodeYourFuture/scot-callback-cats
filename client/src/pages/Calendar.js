@@ -102,7 +102,7 @@ const Calendar = () => {
 												<td>
 													{new Date(client.pick_up_date).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true })}
 													</td>
-												<td>{client.name}</td>
+												<td className="fw-bold">{client.name}</td>
 												<td>{client.bikes_needed}</td>
 												<td>{client.phone_number}</td>
 											</tr>
