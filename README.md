@@ -17,7 +17,8 @@ Mac users:
    psql -d cyf-bike-app-dev -f server/scripts/create_database.sql
    ```
 ## Description
-We developed a tool to help a local charity, Bikes for Refugees, more efficiently schedule bike collections for their clients. Bulit using React (with Boostrap and vanilla CSS), Node.js and Express, and Postgresql for the database. This was our final project for the Code Your Future Full Stack Web Development course, of which we were in Scotland Class 5, for which we had four weeks to design and build our product and present it to an external audience. 
+We developed a tool to help a local charity, Bikes for Refugees, more efficiently schedule bike collections for their clients. Bulit using React (with Boostrap and vanilla CSS), Node.js and Express, and Postgresql for the database. This was our final project for the Code Your Future Full Stack Web Development course, of which we were in Scotland Class 5. We had four weeks to design and build our product and present it to an external audience. 
+https://cyf-bike-app.herokuapp.com/
 
 
 ## Main Features 
@@ -26,9 +27,12 @@ Main features include:
 - Ability to select users from the list and send a customisable message
 - The message UUID is stored in the database
 - Each message contains a unique link to a booking page where the user can select a date and time 
+<img width="941" alt="Screenshot 2022-02-22 at 10 36 09" src="https://user-images.githubusercontent.com/81445969/155115194-8916c32f-ce43-4b79-9e51-dbfa2b9c66c9.png">
 
 ## Contributors 
-
+https://github.com/kenda121
+https://github.com/aalassv
+https://github.com/Tara-Q/
 
 ## Scripts
 
