@@ -18,7 +18,8 @@ Mac users:
    ```
 ## Description
 We developed a tool to help a local charity, Bikes for Refugees, more efficiently schedule bike collections for their clients. Bulit using React (with Boostrap and vanilla CSS), Node.js and Express, and Postgresql for the database. This was our final project for the Code Your Future Full Stack Web Development course, of which we were in Scotland Class 5. We had four weeks to design and build our product and present it to an external audience. 
-https://cyf-bike-app.herokuapp.com/
+
+View it here: https://cyf-bike-app.herokuapp.com/
 
 
 ## Main Features 
