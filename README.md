@@ -9,6 +9,7 @@ View it here: https://cyf-bike-app.herokuapp.com/
 ## Main Features 
 Main features include:
 - A waiting list page with user details and booking statuses, retrieved from a Postgresql database
+- Client data can be added to the database for viewing in the table by uploading a CSV
 - Ability to select users from the list and send a customisable message
 - Each message contains a unique link to a booking page where the user can select a date and time 
 - The next two weeks of bookings are viewable in a bookings page, along with the user's contact details and how many bikes they require.
