@@ -16,39 +16,19 @@ Mac users:
    ```
    psql -d cyf-bike-app-dev -f server/scripts/create_database.sql
    ```
+## Description
+We developed a tool to help a local charity, Bikes for Refugees, more efficiently schedule bike collections for their clients. Bulit using React (with Boostrap and vanilla CSS), Node.js and Express, and Postgresql for the database. This was our final project for the Code Your Future Full Stack Web Development course, of which we were in Scotland Class 5, for which we had four weeks to design and build our product and present it to an external audience. 
 
-# Starter Kit
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+## Main Features 
+Main features include:
+- A waiting list page with booking statuses, retrieved from a Postgresql database
+- Ability to select users from the list and send a customisable message
+- The message UUID is stored in the database
+- Each message contains a unique link to a booking page where the user can select a date and time 
 
-- [x] Full stack ES8+ with [Babel]
-- [x] [Node] LTS support (verified working on 12.x and 14.x LTS releases)
-- [x] [Express] server
-- [x] [React] client with [Webpack]
-- [x] Client-side routing with [React Router]
-- [x] Linting with [ESLint] and [Prettier]
-- [x] Dev mode (watch modes for client and server, proxy to avoid CORS issues)
-- [x] Production build (single deployment artifact, React loaded via CDN)
-- [x] [Heroku] deployment
-- [x] [Cloud Foundry] deployment
-- [x] [Docker] build
-- [x] [Postgres] database with [node-postgres]
+## Contributors 
 
-## Setup
-
-Pick one member of the team to own the repository and pipeline. That person should do the following:
-
-1.  Click the "Use this template" button above (see [GitHub's docs][1]) to create your team repository, select "Include all branches" and name it something appropriate for your project.
-2.  In your new repo, go to "Settings", then "Branches", then switch the default branch to `postgres` (_optional_: you can now delete the old `main` branch and rename `postgres` to `main`, `master` or whatever else you'd like) - see [GitHub's docs][2] again
-3.  In your repo, click the "Deploy to Heroku" button at the top of the README and create a Heroku account when prompted.
-4.  Fill in the name of the application, select Europe and then click "Deploy App".
-5.  Once it has deployed successfully, click the "Manage app" button to view the application details.
-6.  Go to the "Deploy" tab, select "Connect to GitHub" and choose your repo.
-7.  Click "Enable automatic deploys".
-
-Whenever you commit to main (or e.g. merge a [pull request]) it will get automatically deployed!
-
-You should now make sure all of the project team are [collaborators] on the repository.
 
 ## Scripts
 
@@ -68,39 +48,3 @@ If you're using VS Code, a debugging configuration is provided for this.
 There is also a VS Code debugging configuration for the Chrome debugger, which requires the recommended Chrome
 extension, for debugging the client application.
 
-### Security
-
-If the project handles **any kind of** Personally Identifiable Information (PII) then make sure the following
-principles are followed:
-
-- Only collect **strictly necessary** PII;
-- Access to PII should be as restricted as possible;
-- Access to PII should only be possible after authentication. Authentication **must be done** via GitHub. **Ad hoc
-  authentication solutions are not allowed**;
-- Admins must be able to control who has access to the platform and at which levels using only GitHub groups;
-- There must be an audit mechanism in place. It is required by law to know who accessed what and when;
-- Code must be reviewed by senior developers before being pushed to production;
-- APIs must be secure. Make sure we are not handling security on the frontend.
-
-### Troubleshooting
-
-See the guidance in the [wiki].
-
-[1]: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template
-[2]: https://docs.github.com/en/github/administering-a-repository/managing-branches-in-your-repository
-[babel]: https://babeljs.io/
-[cloud foundry]: https://www.cloudfoundry.org/
-[collaborators]: https://help.github.com/en/articles/inviting-collaborators-to-a-personal-repository
-[docker]: https://www.docker.com
-[eslint]: https://eslint.org/
-[express]: https://expressjs.com/
-[heroku]: https://www.heroku.com/
-[node]: https://nodejs.org/en/
-[node-postgres]: https://node-postgres.com/
-[postgres]: https://www.postgresql.org/
-[prettier]: https://prettier.io/
-[pull request]: https://help.github.com/en/articles/about-pull-requests
-[react]: https://reactjs.org/
-[react router]: https://reactrouter.com/web
-[webpack]: https://webpack.js.org/
-[wiki]: https://github.com/textbook/starter-kit/wiki
