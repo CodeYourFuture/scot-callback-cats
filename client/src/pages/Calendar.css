@@ -1,3 +1,7 @@
 .calendar-table th {
   width: 25%;
 }
+
+.align-bikes-requested {
+  text-align: center;
+}

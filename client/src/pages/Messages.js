@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../pages/Messages.css";
 
 
 function Messages () {
@@ -33,9 +34,9 @@ function Messages () {
         <>
         <h1 className="py-3">Messages</h1>
         <div className="table-responsive">
-			<table className="table align-middle table-hover table-striped styled-table border">
+			<table className="table align-middle table-hover border">
 				<caption className="visually-hidden">Messages table</caption>
-				<thead className="table-dark">
+				<thead className="table-secondary">
 					<tr>
 						<th scope="col">Name</th>
 						<th scope="col">Message</th>
@@ -47,10 +48,10 @@ function Messages () {
 					{messageData.map((message)=> {
                         return (
                             <tr key={message.url}>
-                                <td>{message.name}</td>
-                                <td>{message.message}</td>
+                                <td className="fw-bold">{message.name}</td>
+                                <td className="fw-light">{message.message}</td>
                                 <td>{new Date(message.time_sent).toLocaleDateString()}</td>
-                                <td><a href={message.url} className="link-primary">{message.url}</a></td>
+                                <td><a href={message.url} className="link-secondary link-on-hover">{message.url}</a></td>
                             </tr>
                             );
                         })

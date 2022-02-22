@@ -84,10 +84,10 @@ const Calendar = () => {
 								day: "numeric",
 							})}
 						</h2>
-						<div className="table-responsive-xxl ">
-							<table className="table calendar-table align-middle table-striped table-hover caption-top">
+						<div className="table-responsive ">
+							<table className="table calendar-table align-middle  table-hover caption-top table align-middle table-hover  rounded-3 text-nowrap">
 								<caption className="visually-hidden">Clients</caption>
-								<thead className="table-dark">
+								<thead className="table-secondary">
 									<tr>
 										<th scope="col">Time</th>
 										<th scope="col">Name</th>
@@ -102,8 +102,8 @@ const Calendar = () => {
 												<td>
 													{new Date(client.pick_up_date).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true })}
 													</td>
-												<td>{client.name}</td>
-												<td>{client.bikes_needed}</td>
+												<td className="fw-bold">{client.name}</td>
+												<td className="fw-bold">{client.bikes_needed}</td>
 												<td>{client.phone_number}</td>
 											</tr>
 										);

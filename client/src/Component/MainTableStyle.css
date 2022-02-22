@@ -1,8 +1,23 @@
-.styled-table {
-    margin: 1rem 0;
-    font-size: 0.9em;
+.align-bikes-needed {
+    text-align: center;
 }
 
-.styled-table tbody tr:last-of-type{
-    border-bottom: 3px solid #000000;  
+.btn-on-hover:hover {
+    color: black;
+    background-color: rgb(255,193,7);
+    border-color: black;
+}
+
+.btn-on-send-hover:hover {
+    color: white;
+    background-color: #198754;
+    border-color: black;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+}
+
+.form-check-input:checked{
+    background-color: black;
 }

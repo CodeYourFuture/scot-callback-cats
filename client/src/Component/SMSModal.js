@@ -63,7 +63,7 @@ function SMSModal(props) {
 
     return (
       <>
-        <Button variant="primary" onClick={showModal} disabled={props.selectedClients.length === 0}>
+        <Button variant="dark"  className="btn-on-hover fw-bold" onClick={showModal} disabled={props.selectedClients.length === 0}>
           Send SMS
         </Button>
 
@@ -78,10 +78,10 @@ function SMSModal(props) {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={hideModal}>
+            <Button variant="dark"  className="btn-on-hover fw-bold"onClick={hideModal}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+            <Button variant="secondary" className="btn-on-send-hover fw-bold" onClick={handleSubmit}>
               Send SMS
             </Button>
           </Modal.Footer>

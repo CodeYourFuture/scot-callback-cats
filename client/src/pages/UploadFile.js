@@ -56,7 +56,7 @@ const UploadFile = (props) => {
 		<CSVReader
 			cssClass="mt-3 me-1 d-inline-block"
 			cssInputClass="visually-hidden"
-			cssLabelClass="btn btn-primary"
+			cssLabelClass="btn btn-dark btn-on-hover fw-bold"
 			label="Select CSV to import"
 			onFileLoaded={selectFile}
 		/>
