@@ -49,7 +49,7 @@ function Messages () {
                         return (
                             <tr key={message.url}>
                                 <td className="fw-bold">{message.name}</td>
-                                <td>{message.message}</td>
+                                <td className="fw-light">{message.message}</td>
                                 <td>{new Date(message.time_sent).toLocaleDateString()}</td>
                                 <td><a href={message.url} className="link-secondary link-on-hover">{message.url}</a></td>
                             </tr>
