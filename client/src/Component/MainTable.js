@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
 import Checkbox from "./Checkbox.js";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const bookingStatus = {
 	1: "Waiting",
@@ -68,9 +69,9 @@ const MainTable = (props) => {
 		<div className="table-responsive pt-3">
 			<table className="table align-middle table-hover text-nowrap border">
 				<caption className="visually-hidden">Clients</caption>
-				<thead className="table-secondary border rounded-top">
+				<thead className="table-secondary border">
 					<tr>
-						<th scope="col rounded-start">#</th>
+						<th scope="col">#</th>
 						<th scope="col">Id</th>
 						<th scope="col">Added</th>
 						<th scope="col">Name</th>
@@ -85,7 +86,7 @@ const MainTable = (props) => {
 						return (
 							<Fragment key={client.client_id}>
 								<tr>
-									<td className="">
+									<td>
 										<Checkbox
 											isChecked={props.selectedClients.includes(
 												client.client_id
@@ -101,24 +102,28 @@ const MainTable = (props) => {
 									</td>
 									<td>{client.client_id}</td>
 									<td>{new Date(client.date_added).toLocaleDateString()}</td>
-									<td className="fw-bold d-flex justify-content-start align-items-center">
-										<div className="fs-4 me-3">
+									<td className="fw-bold">
+										<button
+											className="border-0 bg-transparent me-2"
+											onClick={() => {
+												props.showOnClientInfoClick(i);
+											}}
+										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
 												width="16"
 												height="16"
-												fill="currentColor"
-												viewBox="0 0 16 16"
-												onClick={() => {
-													props.showOnClientInfoClick(i);
-												}}
-												cursor="pointer"
 											>
 												{props.isHiden === i
 													? arrowPositionDown
 													: arrowPositionUp}
 											</svg>
-										</div>
+											<span className="visually-hidden">
+												{props.isHiden === i
+													? "Show less details"
+													: "Show more details"}
+											</span>
+										</button>
 										<span>{client.name}</span>
 									</td>
 									<td>{client.phone_number}</td>
@@ -130,53 +135,50 @@ const MainTable = (props) => {
 									</td>
 									<td>{validDate(client.pick_up_date)}</td>
 								</tr>
-								<tr>
-									<td
-										colSpan="9"
-										style={
-											props.isHiden === i
-												? { display: "table-cell" }
-												: { display: "none" }
-										}
-									>
-										<ul className="list-group">
-											<li className="list-group-item list-group-item-action hiden-rows-columns">
+								<tr hidden={props.isHiden !== i}>
+									<td colSpan="9">
+										<listGroup as="ol">
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Residence status |</span>
 												<span> {residencyStatus[client.residency_status]}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Country of origin |</span>
 												<span> {client.country_of_origin}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Time in Scotland |</span>
 												<span> {client.time_in_scotland}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Language spoken |</span>
 												<span> {client.language_spoken}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">English speaker |</span>
 												<span> {speakEnglish(client.english_speaker)}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Skill Level |</span>
 												<span> {client.english_skill_level}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Gender |</span>
 												<span> {client.gender}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Date of birth |</span>
 												<span> {validDate(client.date_of_birth)}</span>
-											</li>
-											<li className="list-group-item list-group-item-action">
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Postcode |</span>
-												<span> {client.postcode} {client.referring_agency}</span>
-											</li>
-										</ul>
+												<span> {client.postcode}</span>
+											</ListGroup.Item>
+											<ListGroup.Item action variant="light">
+												<span className="fw-bold">Referring agency |</span>
+												<span> {client.referring_agency}</span>
+											</ListGroup.Item>
+										</listGroup>
 									</td>
 								</tr>
 							</Fragment>
