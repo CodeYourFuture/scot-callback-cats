@@ -14,7 +14,6 @@ export function Home() {
 	const [isFailure, setIsFailure] = useState(false);
 	const [isUploadSuccess, setIsUploadSuccess] = useState(false);
 	const [isUploadFailure, setIsUploadFailure] = useState(false);
-	const [isHiden, setIsHiden]= useState(null);
 
 	const loadClientData = () => {
 		setIsLoading(true);
@@ -76,13 +75,6 @@ export function Home() {
 		setIsUploadFailure(true);
 	};
 
-	const showOnClientInfoClick = (i) => {
-		if (isHiden == i) {
-			return setIsHiden(null);
-		}
-		setIsHiden(i);
-	};
-
 	return (
 
 		<main role="main">
@@ -96,7 +88,7 @@ export function Home() {
 				<Alert variant="danger" onClose={() => setIsUploadFailure(false)} dismissible> Something went wrong during the upload! Please retry.</Alert>}
 			<UploadFile onCsvFileSent={onCsvFileSent} onCsvFileFailed={onCsvFileFailed} />
 			<SMSModal selectedClients={selectedClients} onSMSFailed={onSMSFailed} onSMSSent={onSMSSent} />
-			<MainTable selectedClients={selectedClients} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} showOnClientInfoClick={showOnClientInfoClick} isHiden={isHiden} setIsHiden={setIsHiden} />
+			<MainTable selectedClients={selectedClients} onHandleSelectedUserState={onHandleSelectedUserState} clientData={clientData} error={error} isLoading={isLoading} />
 		</main>
 	);
 

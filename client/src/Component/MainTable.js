@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./MainTableStyle.css";
 import Alert from "react-bootstrap/Alert";
 import Checkbox from "./Checkbox.js";
@@ -34,6 +34,7 @@ const arrowPositionDown = (
 );
 
 const MainTable = (props) => {
+	const [expandedRowIndex, setExpandedRowIndex]= useState(null);
 	if (props.isLoading) {
 		return (
 			<div className="d-flex justify-content-center">
@@ -65,6 +66,12 @@ const MainTable = (props) => {
 		}
 	};
 
+	const handleRowClick = (i) => {
+		if (expandedRowIndex === i) {
+			return setExpandedRowIndex(null);
+		}
+		setExpandedRowIndex(i);
+	};
 	return (
 		<div className="table-responsive pt-3">
 			<table className="table align-middle table-hover text-nowrap border">
@@ -106,7 +113,7 @@ const MainTable = (props) => {
 										<button
 											className="border-0 bg-transparent me-2"
 											onClick={() => {
-												props.showOnClientInfoClick(i);
+												handleRowClick(i);
 											}}
 										>
 											<svg
@@ -114,12 +121,12 @@ const MainTable = (props) => {
 												width="16"
 												height="16"
 											>
-												{props.isHiden === i
+												{expandedRowIndex === i
 													? arrowPositionDown
 													: arrowPositionUp}
 											</svg>
 											<span className="visually-hidden">
-												{props.isHiden === i
+												{expandedRowIndex === i
 													? "Show less details"
 													: "Show more details"}
 											</span>
@@ -135,7 +142,7 @@ const MainTable = (props) => {
 									</td>
 									<td>{validDate(client.pick_up_date)}</td>
 								</tr>
-								<tr hidden={props.isHiden !== i}>
+								<tr hidden={expandedRowIndex !== i}>
 									<td colSpan="9">
 										<listGroup as="ol">
 											<ListGroup.Item action variant="light">
