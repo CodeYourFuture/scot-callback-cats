@@ -149,39 +149,39 @@ const MainTable = (props) => {
 												<span className="fw-bold">Residence status |</span>
 												<span> {residencyStatus[client.residency_status]}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Country of origin |</span>
 												<span> {client.country_of_origin}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Time in Scotland |</span>
 												<span> {client.time_in_scotland}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Language spoken |</span>
 												<span> {client.language_spoken}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">English speaker |</span>
 												<span> {speakEnglish(client.english_speaker)}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Skill Level |</span>
 												<span> {client.english_skill_level}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Gender |</span>
 												<span> {client.gender}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Date of birth |</span>
 												<span> {validDate(client.date_of_birth)}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Postcode |</span>
 												<span> {client.postcode}</span>
 											</ListGroup.Item>
-											<ListGroup.Item action variant="light">
+											<ListGroup.Item as="li" variant="light">
 												<span className="fw-bold">Referring agency |</span>
 												<span> {client.referring_agency}</span>
 											</ListGroup.Item>
