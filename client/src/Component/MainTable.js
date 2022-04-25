@@ -144,7 +144,7 @@ const MainTable = (props) => {
 								</tr>
 								<tr hidden={expandedRowIndex !== i}>
 									<td colSpan="9">
-										<listGroup as="ol">
+										<ListGroup as="ul">
 											<ListGroup.Item action variant="light">
 												<span className="fw-bold">Residence status |</span>
 												<span> {residencyStatus[client.residency_status]}</span>
